@@ -26,13 +26,11 @@
   max-width: 1180px;
 }
 
-.logo {
-  a {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 475px;
-  }
+.logo a {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 475px;
 }
 
 .login {
@@ -44,12 +42,13 @@
   font-size: 13px;
   font-weight: 400;
 
-  .login-icon {
+  &:before {
     position: absolute;
     top: 0;
     left: 0;
     height: 18px;
     width: 17px;
+    content: '';
     background: image-url("icons-sprite.png") no-repeat -154px -2px;
   }
 
@@ -76,12 +75,13 @@
     text-decoration: none;
     color: #323232;
 
-    .cart-icon {
+    &:before {
       position: absolute;
-      top: 0;
+      top: -3px;
       left: 0;
       height: 21px;
       width: 16px;
+      content: '';
       background: image-url("icons-sprite.png") no-repeat -2px -2px;
     }
 
@@ -101,12 +101,13 @@
   font-size: 13px;
   font-weight: 400;
 
-  .hotline-icon {
+  &:before {
     position: absolute;
     top: 0;
     left: 0;
     height: 21px;
     width: 21px;
+    content: '';
     background: image-url("icons-sprite.png") no-repeat -91px -2px;
   }
 
