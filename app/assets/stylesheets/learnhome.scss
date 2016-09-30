@@ -8,22 +8,16 @@
   //$right-busket-square-gray: #ddd;
   //$gray-square: #efefef;
 
-.payments {
-  height: 62px;
-  background-color: #fff;
+.holder {
+  display: block;
+  margin: 0 auto;
+  width: 1180px;
 }
 
 /* header */
 #header {
   position: relative;
   padding-top: 108px;
-}
-
-.holder {
-  display: block;
-  margin: 0 auto;
-  min-width: 980px;
-  max-width: 1180px;
 }
 
 .logo a {
@@ -77,14 +71,30 @@
 
     &:before {
       position: absolute;
-      top: -3px;
-      left: 0;
+      top: -4px;
+      left: 4px;
       height: 21px;
       width: 16px;
       content: '';
       background: image-url("icons-sprite.png") no-repeat -2px -2px;
     }
 
+    .circle {
+      display: block;
+      position: absolute;
+      top: -10px;
+      left: -7px;
+      width: 18px;
+      height: 18px;
+      display:block;
+      border-radius: 9px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 18px;
+      text-align: center;
+      background: $site-green;
+    }
     span {
       font-size: 15px;
       color: $price-green;
@@ -141,4 +151,167 @@
       color: #444;
     }
   }
+}
+
+/* CONTENT */
+
+
+
+/* footer */
+#footer {
+  margin-top: 117px;
+  border-top: 1px solid #d6d6d6;
+}
+
+.content {
+  position: relative;
+  padding-top: 130px;
+  padding-bottom: 75px;
+
+  h3 {
+    font-size: 16px;
+    letter-spacing: 1px;
+    line-height: 30px;
+    font-weight: 700;
+    color: #595959;
+    border-bottom: 1px solid #d6d6d6;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+  }
+}
+
+.footer-logo {
+  position: absolute;
+  top: -66px;
+  left: 525px;
+}
+
+.contact {
+  float: left;
+  width: 270px;
+
+  span {
+    display: inline-block;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #595959;
+    letter-spacing: 1px;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #595959;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+    line-height: 24px;
+  }
+
+  a {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 34px;
+
+    &:last-child {
+        margin-right: 0;
+      }
+
+    &.facebook {
+        height: 16px;
+        width: 8px;
+        background: image-url("icons-sprite.png") no-repeat -59px -2px;
+    }
+
+    &.twitter {
+        height: 13px;
+        width: 17px;
+        background: image-url("icons-sprite.png") no-repeat -133px -2px;
+    }
+
+    &.dribbble {
+        height: 16px;
+        width: 17px;
+        background: image-url("icons-sprite.png") no-repeat -38px -2px;
+    }
+
+    &.googleplus {
+        height: 17px;
+        width: 16px;
+        background: image-url("icons-sprite.png") no-repeat -71px -2px;
+    }
+  }
+}
+
+.support {
+  float: right;
+
+  a {
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 26px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    color: #595959;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 5px;
+    padding-right: 120px;
+  }
+
+  li:before {
+    content:  "-";
+    position: relative;
+    left: -5px;
+  }
+}
+
+/* оплата - нижняя плашка*/
+
+.payments {
+  clear: both;
+  height: 62px;
+  line-height: 62px;
+  text-align: center;
+  background-color: #fff;
+    a {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 28px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.paypal {
+        height: 15px;
+        width: 52px;
+        background: image-url("payments-sprite.png") no-repeat -106px -2px;
+      }
+
+      &.visa {
+        height: 14px;
+        width: 42px;
+        background: image-url("payments-sprite.png") no-repeat -209px -2px;
+      }
+
+      &.mastercard {
+        height: 23px;
+        width: 38px;
+        background: image-url("payments-sprite.png") no-repeat -64px -2px;
+      }
+
+      &.discover {
+        height: 10px;
+        width: 58px;
+        background: image-url("payments-sprite.png") no-repeat -2px -2px;
+      }
+
+      &.skrill {
+        height: 14px;
+        width: 43px;
+        background: image-url("payments-sprite.png") no-repeat -162px -2px;
+      }
+    }
 }
