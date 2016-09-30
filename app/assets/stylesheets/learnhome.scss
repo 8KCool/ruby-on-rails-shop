@@ -1,21 +1,29 @@
 @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700';
-$site-green: #34a994;
-$price-green: #2ba08b;
-$footer-gray: #d6d6d6;
-$product-gray: #cdcdcd;
+  $site-green: #34a994;
+  $price-green: #2ba08b;
+  //$footer-gray: #d6d6d6;
+  //$product-gray: #cdcdcd;
 
-$left-busket-gray: #dfdfdf;
-$right-busket-square-gray: #ddd;
-$gray-square: #efefef;
+  //$left-busket-gray: #dfdfdf;
+  //$right-busket-square-gray: #ddd;
+  //$gray-square: #efefef;
 
 .payments {
   height: 62px;
   background-color: #fff;
 }
 
+/* header */
 #header {
-  padding-top: 108px;
   position: relative;
+  padding-top: 108px;
+}
+
+.holder {
+  display: block;
+  margin: 0 auto;
+  min-width: 980px;
+  max-width: 1180px;
 }
 
 .logo {
@@ -29,22 +37,25 @@ $gray-square: #efefef;
 
 .login {
   position: relative;
+  float: left;
+  margin-bottom: 20px;
   padding-left: 29px;
   letter-spacing: 1px;
   font-size: 13px;
   font-weight: 400;
-  float: left;
-  margin-bottom: 20px;
+
   .login-icon {
     position: absolute;
-    width: 17px;
-    height: 18px;
-    background: image-url("icons-sprite.png") no-repeat -154px -2px;
-    left: 0;
     top: 0;
+    left: 0;
+    height: 18px;
+    width: 17px;
+    background: image-url("icons-sprite.png") no-repeat -154px -2px;
   }
+
   span {
     font-weight: 600;
+
     a {
       text-decoration: none;
       color: #605f5f;
@@ -55,66 +66,63 @@ $gray-square: #efefef;
 .cart {
   margin-right: 17px;
   a {
-    position: relative;
-    padding-left: 29px;
     display: block;
-    text-decoration: none;
-    color: #323232;
+    position: relative;
+    float: right;
+    padding-left: 29px;
     text-weight: 400;
     letter-spacing: 1px;
     font-size: 13px;
-    float: right;
+    text-decoration: none;
+    color: #323232;
+
     .cart-icon {
       position: absolute;
-      width: 16px;
-      height: 21px;
-      background: image-url("icons-sprite.png") no-repeat -2px -2px;
-      left: 0;
       top: 0;
+      left: 0;
+      height: 21px;
+      width: 16px;
+      background: image-url("icons-sprite.png") no-repeat -2px -2px;
     }
+
     span {
-      color: $price-green;
       font-size: 15px;
+      color: $price-green;
     }
   }
 }
 
 .hotline {
   position: relative;
+  clear: both;
+  margin-bottom: 118px;
   padding-left: 29px;
   letter-spacing: 1px;
   font-size: 13px;
   font-weight: 400;
-  clear: both;
-  margin-bottom: 118px;
+
   .hotline-icon {
     position: absolute;
-    width: 21px;
-    height: 21px;
-    background: image-url("icons-sprite.png") no-repeat -91px -2px;
-    left: 0;
     top: 0;
+    left: 0;
+    height: 21px;
+    width: 21px;
+    background: image-url("icons-sprite.png") no-repeat -91px -2px;
   }
+
   span {
     font-weight: 600;
     font-size: 16px;
   }
 }
 
-.holder {
-  display: block;
-  margin: 0 auto;
-  min-width: 980px;
-  max-width: 1180px;
-}
-
+/* navigation */
 .main-nav ul {
-  text-decoration: none;
-  text-align: center;
+  margin-bottom: 15px;
   border-bottom: 5px solid $site-green;
   padding: 0 128px 15px;
-  margin-bottom: 15px;
-
+  text-decoration: none;
+  text-align: center;
   li {
     display: inline;
     margin-right: 58px;
