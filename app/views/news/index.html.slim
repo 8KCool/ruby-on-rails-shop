@@ -1,0 +1,17 @@
+section.holder
+  article.content
+    h1 = @seo_carrier.title
+
+    - if @news_list.any?
+      ul
+        - @news_list.each do |news|
+          li
+            .h3 = link_to news.title, news_path(news.slug)
+            .published_at = I18n.l news.published_at, format: :long
+            p
+              - unless news.preview.blank?
+                = image_tag news.preview.url, class: 'pull-left', style: 'margin: 0 1em 1em 0'
+              = news.intro
+      = paginate @news_list
+    - else
+      p = t 'defaults.empty_collections.news'

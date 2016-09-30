@@ -1,0 +1,49 @@
+@import "mixins";
+/*!
+ * Screen base styles
+ *  taken from Bootstrap v3.2.0 | MIT License | getbootstrap.com
+ */
+
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  font: #{$html-font-size}/#{$html-line-height} $font;
+}
+body {
+  @include font-rem(14px, 16px, $font);
+  color: #000;
+  background-color: #fbfbfb;
+}
+
+a {
+  color: #428bca;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #2a6496;
+  text-decoration: underline;
+}
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+/* anchor underline variants */
+/* - single line only variant -
+  display: inline-block;
+  border-bottom: 1px solid;
+  line-height: 90%;
+*/
+/* - good variant for single color inline link (can be multiline) -
+  background: url('one_px_428bca.png') repeat-x left 1.26em;
+*/
+
+figure {
+  margin: 0;
+}
+img {
+  vertical-align: middle;
+}
+
+@-ms-viewport { width: device-width; }

@@ -1,0 +1,43 @@
+// SASS variable overrides must be declared before loading up Active Admin's styles.
+//
+// To view the variables that Active Admin provides, take a look at
+// `app/assets/stylesheets/active_admin/mixins/_variables.css.scss` in the
+// Active Admin source.
+//
+// For example, to change the sidebar width:
+// $sidebar-width: 242px;
+
+// Active Admin's got SASS!
+@import "active_admin/mixins";
+@import "active_admin/base";
+
+// Overriding any non-variable SASS must be done after the fact.
+// For example, to change the default status-tag color:
+//
+//   .status_tag { background: #6090DB; }
+
+#main_content img { max-width: 100%; }
+
+// Redactor fixes
+.redactor-box { display: inline-block; width: calc(80% - 22px); }
+.redactor-editor {
+  ul { list-style: disc; }
+  ol { list-style: decimal; }
+  ul > li, ol > li { padding: 0; } }
+
+// Static File Icon
+.file-icon {
+  display: inline-block;
+  width: 32px; height: 32px;
+  background: url('admin/static_files_icons.png') no-repeat left top;
+  // &.non { background-position: left top; } // by default
+  &.dir { background-position: left -36px; }
+  &.pdf { background-position: left -72px; }
+  &.doc { background-position: left -108px; }
+  &.xls { background-position: left -144px; }
+  &.ppt { background-position: left -180px; }
+  &.odt { background-position: left -216px; }
+  &.zip { background-position: left -252px; }
+  &.xml { background-position: left -288px; }
+  &.css { background-position: left -324px; }
+}

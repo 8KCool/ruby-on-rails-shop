@@ -1,0 +1,121 @@
+ru:
+  yep: "Да"
+  nope: "Нет"
+  defaults:
+    page_titles:
+      news: "Новости"
+      feedback: "Обратная связь"
+    empty_collections:
+      news: "Нет новостей"
+  seo:
+    seo_parameters: "SEO параметры"
+    empty_seo_title_info: "в теге title будет использован Заголовок"
+    seo_title_hint: "по умолчанию используется заголовок страницы"
+    carrier_attributes:
+      no_title_postfix: "Убирать постфикс для title?"
+      seo_title:        "Значение title"
+      seo_descr:        "Meta description"
+      seo_keywords:     "Meta keywords"
+  active_admin:
+    batch_actions:
+      labels:
+        hide: "Скрыть"
+        show: "Не скрывать"
+    hints:
+      slug: 'Уникальная завершающая часть URL адреса, которая обозначает эту страницу. Например, для адреса `example.com/pages/foton.html` часть `foton` - slug страницы. <a href="http://en.wikipedia.org/wiki/Slug_(web_publishing)#Slug" target="_blank">Подробнее</a>.<br>Если оставить поле пустым, то slug будет сгенерирован на основе заголовка.'
+  feedback:
+    name: "Имя"
+    surname: "Фамилия"
+    email: "Email"
+    message: "Сообщение"
+    submit: "Отправить"
+    success: "Спасибо вам за ваше сообщение!"
+  mailer:
+    robot_signature: "Робот сайта"
+    robot_wish: "Желаю вам хорошего дня и успехов в работе"
+    manager_receieving_reason: "Вы получили это письмо, так как адрес вашей электронной почты указана как email менеджера в настройках сайта %{site_name}"
+  activerecord:
+    models:
+      admin_user:
+        one:   "Оператор" # 1
+        few:   "Оператора" # 2
+        many:  "Операторов" # 5
+        other: "Операторы" # all
+      setting:
+        one:   "Настройка"
+        few:   "Настройки"
+        many:  "Настроек"
+        other: "Настройки"
+      static_file:
+        one:   "Загруженный файл"
+        few:   "Загруженных файла"
+        many:  "Загруженных файлов"
+        other: "Загруженные файлы"
+      page:
+        one:   "Страница"
+        few:   "Страницы"
+        many:  "Страниц"
+        other: "Страницы"
+      nav_item:
+        one:    "Пункт меню"
+        few:    "Пункта меню"
+        many:   "Пунктов меню"
+        other:  "Навигация"
+      news:
+        one:    "Новость"
+        few:    "Новости"
+        many:   "Новостей"
+        other:  "Новости"
+    attributes:
+      admin_user:
+        email:                  "Электронная почта"
+        encrypted_password:     "Шифр. пароль"
+        reset_password_token:   "Токен сброса пароля"
+        reset_password_sent_at: "Отправлен на сброс"
+        remember_created_at:    "Попросил запомнить"
+        sign_in_count:          "Кол-во входов"
+        current_sign_in_at:     "Текущая сессия с"
+        last_sign_in_at:        "Дата последней сессии"
+        current_sign_in_ip:     "Текущий IP оператора"
+        last_sign_in_ip:        "Последний IP оператора"
+        created_at:             "Создан"
+        updated_at:             "Обновлен"
+      setting:
+        name:  "Название"
+        value: "Значение"
+      static_file:
+        file:        "Файл"
+        url:         "Ссылка на файл"
+        filetype:    "Тип"
+        name:        "Имя файла"
+        size:        "Размер, Кб"
+        holder:      "Владелец"
+        holder_type: "Тип владельца"
+        created_at:  "Создан"
+        updated_at:  "Обновлён"
+      page:
+        title:      "Заголовок"
+        path:       "URL‐путь"
+        body:       "Содержание"
+        prior:      "Порядок"
+        hided:      "Скрыта?"
+        created_at: "Создана"
+        updated_at: "Обновлена"
+      nav_item:
+        title:    "Заголовок"
+        url_type: "Тип ссылки"
+        url_page: "Страница, на которую ссылаемся"
+        url_text: "Текст ссылки"
+        prior:    "Порядок"
+        hided:    "Скрыт?"
+      news:
+        title:          "Заголовок"
+        slug:           "slug"
+        published_at:   "Опубликована"
+        preview:        "Превью"
+        remove_preview: "Удалить изображение превью"
+        intro:          "Вступление"
+        body:           "Содержание"
+        hided:          "Скрыта?"
+        created_at:     "Создана"
+        updated_at:     "Обновлена"

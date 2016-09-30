@@ -1,0 +1,135 @@
+@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700';
+$site-green: #34a994;
+$price-green: #2ba08b;
+$footer-gray: #d6d6d6;
+$product-gray: #cdcdcd;
+
+$left-busket-gray: #dfdfdf;
+$right-busket-square-gray: #ddd;
+$gray-square: #efefef;
+
+.payments {
+  height: 62px;
+  background-color: #fff;
+}
+
+#header {
+  padding-top: 108px;
+  position: relative;
+}
+
+.logo {
+  a {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 475px;
+  }
+}
+
+.login {
+  position: relative;
+  padding-left: 29px;
+  letter-spacing: 1px;
+  font-size: 13px;
+  font-weight: 400;
+  float: left;
+  margin-bottom: 20px;
+  .login-icon {
+    position: absolute;
+    width: 17px;
+    height: 18px;
+    background: image-url("icons-sprite.png") no-repeat -154px -2px;
+    left: 0;
+    top: 0;
+  }
+  span {
+    font-weight: 600;
+    a {
+      text-decoration: none;
+      color: #605f5f;
+    }
+  }
+}
+
+.cart {
+  margin-right: 17px;
+  a {
+    position: relative;
+    padding-left: 29px;
+    display: block;
+    text-decoration: none;
+    color: #323232;
+    text-weight: 400;
+    letter-spacing: 1px;
+    font-size: 13px;
+    float: right;
+    .cart-icon {
+      position: absolute;
+      width: 16px;
+      height: 21px;
+      background: image-url("icons-sprite.png") no-repeat -2px -2px;
+      left: 0;
+      top: 0;
+    }
+    span {
+      color: $price-green;
+      font-size: 15px;
+    }
+  }
+}
+
+.hotline {
+  position: relative;
+  padding-left: 29px;
+  letter-spacing: 1px;
+  font-size: 13px;
+  font-weight: 400;
+  clear: both;
+  margin-bottom: 118px;
+  .hotline-icon {
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    background: image-url("icons-sprite.png") no-repeat -91px -2px;
+    left: 0;
+    top: 0;
+  }
+  span {
+    font-weight: 600;
+    font-size: 16px;
+  }
+}
+
+.holder {
+  display: block;
+  margin: 0 auto;
+  min-width: 980px;
+  max-width: 1180px;
+}
+
+.main-nav ul {
+  text-decoration: none;
+  text-align: center;
+  border-bottom: 5px solid $site-green;
+  padding: 0 128px 15px;
+  margin-bottom: 15px;
+
+  li {
+    display: inline;
+    margin-right: 58px;
+
+    &:last-child {
+      margin-right: 0px;
+    }
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #444;
+    }
+  }
+}
