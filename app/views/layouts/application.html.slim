@@ -131,11 +131,11 @@ html lang=I18n.locale
         div.logo
           = link_to image_tag("Logo.png", alt: "Логотип"), {action: 'index', controller: 'home'}
         div.cart
-          a href="/#cart"
+          div.circle
+          a href="/cart"
             | SHOPPING CART:
-            div.circle 2
-            span
-              |  $129.00
+            span.tpricespan
+              |  EMPTY
         div.hotline
           | HOTLINE:
           span
@@ -148,7 +148,7 @@ html lang=I18n.locale
       = yield
 
     footer#footer
-      div.content.holder.clearfix
+      div.fcontent.holder.clearfix
         div.footer-logo
           = image_tag("Logo.png", size: "133x132", alt: "Логотип в футере")
         div.contact

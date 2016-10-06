@@ -19,5 +19,6 @@
  *= require helpers
  *= require screen
  *= require learnhome
+ *= require learncart
  *= require_self
  */

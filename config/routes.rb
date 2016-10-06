@@ -19,10 +19,12 @@ Rails.application.routes.draw do
   resources :news, only: [:index, :show]
 
   # pages
+  get '/cart', to: 'home#cart'
   get '*page_path' => 'pages#show', as: :page
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
