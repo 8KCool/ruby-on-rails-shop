@@ -7,7 +7,7 @@ class CreateSettings < ActiveRecord::Migration
         { ident: "site_name",
           name: "Название сайта",
           descr: "Название сайта отображается в заголовке страниц сайта",
-          val: "Mayak",
+          val: "FrontLearn",
           often: true },
         { ident: "manager_email",
           name: "Email менеджера",

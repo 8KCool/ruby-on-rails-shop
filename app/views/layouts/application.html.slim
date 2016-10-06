@@ -119,7 +119,7 @@ html lang=I18n.locale
 
     #wrap.holder
       header#header
-        div.login
+        .login
           | WELCOME, YOU CAN
           span
             a href="/#login"
@@ -128,15 +128,15 @@ html lang=I18n.locale
           span
             a href="/#register"
               |  REGISTER
-        div.logo
+        .logo
           = link_to image_tag("Logo.png", alt: "Логотип"), {action: 'index', controller: 'home'}
-        div.cart
-          div.circle
+        .cart
+          .circle
           a href="/cart"
             | SHOPPING CART:
             span.tpricespan
               |  EMPTY
-        div.hotline
+        .hotline
           | HOTLINE:
           span
             |  +88 987 654 321
@@ -148,10 +148,10 @@ html lang=I18n.locale
       = yield
 
     footer#footer
-      div.fcontent.holder.clearfix
-        div.footer-logo
+      .fcontent.holder.clearfix
+        .footer-logo
           = image_tag("Logo.png", size: "133x132", alt: "Логотип в футере")
-        div.contact
+        .contact
           h3 CONNECT WITH US
           span Modelo - eCommerce
           p
@@ -167,7 +167,7 @@ html lang=I18n.locale
           a.googleplus href="/#googleplus"
 
 
-        div.support
+        .support
           h3 OUR SUPPORT
           ul
             a href="/#terms"
@@ -184,7 +184,7 @@ html lang=I18n.locale
               li Track Orders
             a href="/#services"
               li Services
-      div.payments.clearfix
+      .payments.clearfix
         a.paypal href="/#paypal"
         a.visa href="/#visa"
         a.mastercard href="/#mastercard"
