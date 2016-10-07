@@ -371,6 +371,7 @@ $site-green: #34a994;
   .prodbutton {
     position: absolute;
     cursor: pointer;
+    user-select: none;
     height: 32px;
     width: 180px;
     opacity: 0;
