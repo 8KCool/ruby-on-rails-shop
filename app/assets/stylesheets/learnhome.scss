@@ -172,13 +172,10 @@ $site-green: #34a994;
   width: 290px;
   float: left;
 
-  &:before {
-    position: absolute;
-    top: 127px;
-    left: 62px;
+  .feblaunches {
+    margin: 127px 0 20px 66px;
     height: 43px;
     width: 160px;
-    content: '';
     background: image-url("launches.png") no-repeat;
   }
 
@@ -186,10 +183,10 @@ $site-green: #34a994;
     height: 45px;
     width: 180px;
     margin-left: 57px;
-    margin-top: 189px;
     background-color: $site-green;
     line-height: 45px;
     text-transform: uppercase;
+
     a {
       color: #fff;
       font-size: 14px;
@@ -205,13 +202,11 @@ $site-green: #34a994;
   width: 560px;
   float: left;
 
-  a:before {
-    position: absolute;
-    top: 17px;
-    left: 115px;
+  .summersale {
+    margin-top: 17px;
+    margin-left: 115px;
     height: 329px;
     width: 329px;
-    content: '';
     background: image-url("sale.png") no-repeat;
   }
 }
