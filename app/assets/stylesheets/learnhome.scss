@@ -41,14 +41,11 @@ $site-green: #34a994;
     background: image-url("icons-sprite.png") no-repeat -154px -2px;
   }
 
-  span {
-    font-weight: 600;
-
     a {
       text-decoration: none;
       color: #605f5f;
+      font-weight: 600;
     }
-  }
 }
 
 .cart {

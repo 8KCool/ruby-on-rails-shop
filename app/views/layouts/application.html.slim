@@ -121,12 +121,10 @@ html lang=I18n.locale
       header#header
         .login
           ' welcome, you can
-          span
-            a href="/#login"
-              ' login
+          a href="/#login"
+            ' login
           ' or
-          span
-            a href="/#register" register
+          a href="/#register" register
         .logo
           = link_to image_tag("Logo.png", alt: "Логотип"), {action: 'index', controller: 'home'}
         .cart
