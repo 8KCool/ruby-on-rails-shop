@@ -161,6 +161,12 @@ $site-green: #34a994;
 
     .tleft {
       font-size: 15px;
+
+      .magicblock {
+        display: inline-block;
+        padding-top: 17px;
+        line-height: 14px;
+      }
     }
 
     .tright {
