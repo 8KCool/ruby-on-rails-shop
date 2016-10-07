@@ -79,6 +79,12 @@ $site-green: #34a994;
   font-weight: 400;
   color: #595959;
 
+  .prodinp {
+    width: 23px;
+    border: none;
+    outline-color: #ddd;
+  }
+
   .plusblock {
     cursor: pointer;
     position: relative;
@@ -99,6 +105,13 @@ $site-green: #34a994;
 
   }
 
+}
+
+/* disable arrows in input */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* Инфа по заказу и кнопка заказать*/
