@@ -12,6 +12,7 @@ $site-green: #34a994;
 #header {
   position: relative;
   padding-top: 108px;
+  text-transform: uppercase;
 }
 
 .logo a {
@@ -190,6 +191,7 @@ $site-green: #34a994;
     margin-top: 189px;
     background-color: $site-green;
     line-height: 45px;
+    text-transform: uppercase;
     a {
       color: #fff;
       font-size: 14px;
@@ -256,6 +258,7 @@ $site-green: #34a994;
 .countprod, .loadmore {
   display: block;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .countprod {
@@ -283,6 +286,7 @@ $site-green: #34a994;
   margin-bottom: 14px;
   border: 1px solid transparent;
   background-color: #fff;
+  text-transform: uppercase;
   &:hover {
     box-shadow: 0 0 0 11px #f5f5f5;
     border: 1px solid #ececec;
@@ -397,6 +401,7 @@ $site-green: #34a994;
   margin-bottom: 47px;
 
   h3 {
+    text-transform: uppercase;
     font-size: 16px;
     letter-spacing: 1px;
     line-height: 30px;

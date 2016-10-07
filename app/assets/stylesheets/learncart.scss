@@ -5,6 +5,7 @@ $site-green: #34a994;
   margin-top: 9px;
   float: left;
   width: 880px;
+  text-transform: uppercase;
 
   .prodbox {
     display: flex;
@@ -111,6 +112,7 @@ $site-green: #34a994;
     color: #595959;
     font-size: 16.64px;
     border-bottom: 2px solid #ddd;
+    text-transform: uppercase;
   }
 
   .subship {
@@ -124,6 +126,7 @@ $site-green: #34a994;
       display: flex;
       justify-content: space-between;
       margin-bottom: 20px;
+      text-transform: uppercase;
     }
 
     .ship {
@@ -135,6 +138,7 @@ $site-green: #34a994;
       font-weight: 400;
       color: #595959;
       font-size: 15px;
+      text-transform: uppercase;
     }
 
     .right {
@@ -152,6 +156,7 @@ $site-green: #34a994;
     letter-spacing: 1px;
     font-weight: 700;
     color: #595959;
+    text-transform: uppercase;
 
     .tleft {
       font-size: 15px;
@@ -173,6 +178,7 @@ $site-green: #34a994;
     font-size: 19.03px;
     font-weight: 700;
     text-align: center;
+    text-transform: uppercase;
   }
   .contin {
     height: 50px;
@@ -181,6 +187,7 @@ $site-green: #34a994;
     letter-spacing: 1px;
     line-height: 50px;
     text-align: center;
+    text-transform: uppercase;
     a {
       color: #676666;
     }
