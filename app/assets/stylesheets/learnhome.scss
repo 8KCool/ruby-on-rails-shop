@@ -159,7 +159,6 @@ $site-green: #34a994;
 
 .collection, .sales, .newarrivals, .lbotblock, .rbotblock {
   margin-bottom: 20px;
-  background: #ebebeb;
 }
 
 .collection, .sales, .lbotblock {
@@ -170,6 +169,14 @@ $site-green: #34a994;
   height: 680px;
   width: 290px;
   float: left;
+  position: relative;
+
+  img {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+  }
 
   .feblaunches {
     margin: 127px 0 20px 66px;
@@ -199,6 +206,14 @@ $site-green: #34a994;
   display: inline-block;
   height: 362px;
   width: 560px;
+  position: relative;
+
+  img {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+  }
 
   .summersale {
     margin-top: 17px;
