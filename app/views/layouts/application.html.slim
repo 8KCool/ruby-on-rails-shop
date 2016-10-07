@@ -119,6 +119,11 @@ html lang=I18n.locale
 
     #wrap.holder
       header#header
+        .cart
+          .circle
+          a href="/cart"
+            ' shopping cart:
+            span.tpricespan empty
         .login
           ' welcome, you can
           a href="/#login"
@@ -126,14 +131,11 @@ html lang=I18n.locale
           ' or
           a href="/#register" register
         = link_to image_tag("Logo.png", alt: "Логотип", class: "logo"), root_url
-        .cart
-          .circle
-          a href="/cart"
-            ' shopping cart:
-            span.tpricespan empty
+        br /
         .hotline
           ' hotline:
           span +88 987 654 321
+
 
         nav.main-nav
           ul
@@ -150,11 +152,11 @@ html lang=I18n.locale
           span Modelo - eCommerce
           p
             | 4 East 80th Street, New York, NY
-            br
+            br /
             | +88 &ensp;897 654 321
-            br
+            br /
             | say@hello.com
-            br
+            br /
           a.facebook href="/#facebook"
           a.twitter href="/#twitter"
           a.dribbble href="/#dribbble"

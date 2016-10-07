@@ -24,8 +24,8 @@ $site-green: #34a994;
 }
 
 .login {
+  display: inline-block;
   position: relative;
-  float: left;
   margin-bottom: 20px;
   padding-left: 29px;
   letter-spacing: 1px;
@@ -101,8 +101,8 @@ $site-green: #34a994;
 }
 
 .hotline {
+  display: inline-block;
   position: relative;
-  clear: both;
   margin-bottom: 118px;
   padding-left: 29px;
   font-size: 13px;
