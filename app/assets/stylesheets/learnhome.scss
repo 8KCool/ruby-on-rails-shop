@@ -167,7 +167,6 @@ $site-green: #34a994;
 }
 
 .collection {
-  position: relative;
   height: 680px;
   width: 290px;
   float: left;
@@ -197,10 +196,9 @@ $site-green: #34a994;
 }
 
 .sales {
-  position: relative;
+  display: inline-block;
   height: 362px;
   width: 560px;
-  float: left;
 
   .summersale {
     margin-top: 17px;
@@ -212,6 +210,7 @@ $site-green: #34a994;
 }
 
 .newarrivals {
+  display: inline-block;
   position: relative;
   height: 362px;
   width: 290px;
@@ -229,13 +228,13 @@ $site-green: #34a994;
 }
 
 .lbotblock {
-  float: left;
+  display: inline-block;
   height: 298px;
   width: 280px;
 }
 
 .rbotblock {
-  float: right;
+  display: inline-block;
   height: 298px;
   width: 570px;
 }
