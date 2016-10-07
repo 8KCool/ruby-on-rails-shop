@@ -2,9 +2,10 @@ $site-green: #34a994;
 
 
 .allprods {
-  margin-top: 9px;
-  float: left;
+  display: inline-block;
   width: 880px;
+  margin-top: 9px;
+  margin-bottom: 62px;
   text-transform: uppercase;
 
   .prodbox {
@@ -61,7 +62,7 @@ $site-green: #34a994;
     }
 
     &:last-child {
-      margin-bottom: 62px;
+      margin-bottom: 0;
     }
   }
 }
