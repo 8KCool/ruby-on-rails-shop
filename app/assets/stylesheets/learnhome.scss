@@ -412,9 +412,10 @@ $site-green: #34a994;
 }
 
 .footer-logo {
-  position: absolute;
-  top: -66px;
-  left: 525px;
+  position: relative;
+  height: 1px;
+  text-align: center;
+  top: -177px;
 }
 
 .contact {
