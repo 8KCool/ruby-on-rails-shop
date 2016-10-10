@@ -157,8 +157,13 @@ $site-green: #34a994;
   margin-bottom: 45px;
 }
 
-.collection, .sales, .newarrivals, .lbotblock, .rbotblock {
+.fixblock {
   margin-bottom: 20px;
+  margin-left: 0;
+}
+
+.fixblock > a {
+  display: block;
 }
 
 .collection, .sales, .lbotblock {
@@ -223,6 +228,10 @@ $site-green: #34a994;
     height: 329px;
     width: 329px;
     background: image-url("sale.png") no-repeat;
+  }
+
+  a {
+    display: block;
   }
 }
 
