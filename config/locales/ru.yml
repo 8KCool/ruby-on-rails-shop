@@ -41,6 +41,11 @@ ru:
         few:   "Оператора" # 2
         many:  "Операторов" # 5
         other: "Операторы" # all
+      category:
+        one:   "Категория"
+        few:   "Категории"
+        many:  "Категорий"
+        other: "Категории"
       setting:
         one:   "Настройка"
         few:   "Настройки"
@@ -80,6 +85,11 @@ ru:
         last_sign_in_ip:        "Последний IP оператора"
         created_at:             "Создан"
         updated_at:             "Обновлен"
+      category:
+        name:  "Название"
+        hided: "Скрыта?"
+        created_at: "Добавлена"
+        updated_at: "Обновлена"
       setting:
         name:  "Название"
         value: "Значение"
