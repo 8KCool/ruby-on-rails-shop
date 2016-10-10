@@ -67,12 +67,8 @@ $site-green: #34a994;
   }
 }
 
-.prodbox-func .countblock{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  border: 1px solid #ddd;
+.prodbox-func .countblock {
+  position: relative;
   height: 40px;
   width: 72px;
   font-size: 15px;
@@ -80,14 +76,23 @@ $site-green: #34a994;
   color: #595959;
 
   .prodinp {
-    width: 23px;
-    border: none;
+    box-sizing: border-box;
+    height: 40px;
+    width: 72px;
+    padding-right: 35px;
+    border: 1px solid #ddd;
     outline-color: #ddd;
+
+    &:focus {
+      border: none;
+    }
   }
 
   .plusblock {
     cursor: pointer;
-    position: relative;
+    position: absolute;
+    top: 7px;
+    right: 6px;
     height: 27px;
     width: 27px;
     background-color: #efefef;
