@@ -12,4 +12,5 @@ ActiveAdmin.register Category do
     column :updated_at
     actions
   end
+
 end

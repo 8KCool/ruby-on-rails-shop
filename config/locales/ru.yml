@@ -46,6 +46,11 @@ ru:
         few:   "Категории"
         many:  "Категорий"
         other: "Категории"
+      product:
+        one:   "Продукт"
+        few:   "Продукта"
+        many:  "Продуктов"
+        other: "Продукты"
       setting:
         one:   "Настройка"
         few:   "Настройки"
@@ -90,6 +95,15 @@ ru:
         hided: "Скрыта?"
         created_at: "Добавлена"
         updated_at: "Обновлена"
+      product:
+        name:  "Название"
+        image: "Изображение"
+        price: "Цена"
+        count: "Количество"
+        prior: "Приоритет"
+        hided: "Скрыт?"
+        created_at: "Добавлен"
+        updated_at: "Обновлен"
       setting:
         name:  "Название"
         value: "Значение"

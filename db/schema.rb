@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161010075209) do
+ActiveRecord::Schema.define(version: 20161010083618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,20 @@ ActiveRecord::Schema.define(version: 20161010075209) do
   add_index "pages", ["hided"], name: "index_pages_on_hided", using: :btree
   add_index "pages", ["path"], name: "index_pages_on_path", using: :btree
   add_index "pages", ["prior"], name: "index_pages_on_prior", using: :btree
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name",                       null: false
+    t.string   "image"
+    t.float    "price",                      null: false
+    t.integer  "count",      default: 0,     null: false
+    t.integer  "prior",      default: 9,     null: false
+    t.boolean  "hided",      default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "products", ["hided"], name: "index_products_on_hided", using: :btree
+  add_index "products", ["prior"], name: "index_products_on_prior", using: :btree
 
   create_table "settings", force: :cascade do |t|
     t.string   "ident",                      null: false
