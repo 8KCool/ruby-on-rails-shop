@@ -194,10 +194,12 @@ $site-green: #34a994;
     text-transform: uppercase;
 
     a {
+      display: block;
       color: #fff;
       font-size: 14px;
       font-weight: 700;
       text-align: center;
+      text-decoration: none;
     }
   }
 }
@@ -256,16 +258,14 @@ $site-green: #34a994;
 
 /*CONTENT PRODUCTS*/
 
-.content a {
-  display: block;
-  height: inherit;
-  text-decoration: none;
-}
-
-.countprod, .loadmore {
+.countprod, .loadmore > a {
   display: block;
   text-align: center;
   text-transform: uppercase;
+}
+
+.loadmore > a {
+  text-decoration: none;
 }
 
 .countprod {
