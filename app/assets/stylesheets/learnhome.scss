@@ -160,6 +160,7 @@ $site-green: #34a994;
 .fixblock {
   margin-bottom: 20px;
   margin-left: 0;
+  vertical-align: top;
 }
 
 .fixblock > a {
@@ -215,19 +216,17 @@ $site-green: #34a994;
   width: 560px;
   position: relative;
 
-  img {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-  }
-
   .summersale {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     margin-top: 17px;
     margin-left: 115px;
     height: 329px;
     width: 329px;
-    background: image-url("sale.png") no-repeat;
+    background: image-url("sale.png") no-repeat center center;
   }
 
   a {
