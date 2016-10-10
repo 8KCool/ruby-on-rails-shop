@@ -119,27 +119,23 @@ html lang=I18n.locale
 
     #wrap.holder
       header#header
-        .login
-          | WELCOME, YOU CAN
-          span
-            a href="/#login"
-              |  LOGIN
-          |  OR
-          span
-            a href="/#register"
-              |  REGISTER
-        .logo
-          = link_to image_tag("Logo.png", alt: "Логотип"), {action: 'index', controller: 'home'}
         .cart
           .circle
           a href="/cart"
-            | SHOPPING CART:
-            span.tpricespan
-              |  EMPTY
+            ' shopping cart:
+            span.tpricespan empty
+        .login
+          ' welcome, you can
+          a href="/#login"
+            | login
+          '  or
+          a href="/#register" register
+        = link_to image_tag("Logo.png", alt: "Логотип", class: "logo"), root_url
+        br /
         .hotline
-          | HOTLINE:
-          span
-            |  +88 987 654 321
+          ' hotline:
+          span +88 987 654 321
+
 
         nav.main-nav
           ul
@@ -152,38 +148,40 @@ html lang=I18n.locale
         .footer-logo
           = image_tag("Logo.png", size: "133x132", alt: "Логотип в футере")
         .contact
-          h3 CONNECT WITH US
-          span Modelo - eCommerce
+          h3 connect with us
+          .naming Modelo - eCommerce
           p
-            | 4 East  80th Street, New York, NY
-            br
+            | 4 East 80th Street, New York, NY
+            br /
             | +88 &ensp;897 654 321
-            br
+            br /
             | say@hello.com
-            br
-          a.facebook href="/#facebook"
-          a.twitter href="/#twitter"
-          a.dribbble href="/#dribbble"
-          a.googleplus href="/#googleplus"
+            br /
+          .socialblock
+            a.facebook href="/#facebook"
+            a.twitter href="/#twitter"
+            a.dribbble href="/#dribbble"
+            a.googleplus href="/#googleplus"
 
 
         .support
-          h3 OUR SUPPORT
+          h3 our support
           ul
-            a href="/#terms"
-              li Terms & Conditions
-            a href="/#delivery"
-              li Delivery
-            a href="/#secpay"
-              li Secure Payment
-            a href="/#contactus"
-              li Contact Us
-            a href="/#refunds"
-              li Refunds
-            a href="/#track"
-              li Track Orders
-            a href="/#services"
-              li Services
+            li
+              a href="/#terms" Terms & Conditions
+            li
+              a href="/#delivery" Delivery
+            li
+              a href="/#secpay" Secure Payment
+            li
+              a href="/#contactus" Contact Us
+            li
+              a href="/#refunds" Refunds
+            li
+              a href="/#track" Track Orders
+            li
+              a href="/#services" Services
+
       .payments.clearfix
         a.paypal href="/#paypal"
         a.visa href="/#visa"

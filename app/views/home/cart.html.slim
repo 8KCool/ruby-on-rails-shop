@@ -1,61 +1,66 @@
-.content.holder.clearfix
+.pcontent.holder.clearfix
+  .cartbox
+    .cbtitle shopping cart summary
+    .subship
+      .subtot
+        span.left cart subtotal
+        span.right $129.00
+      .ship
+        span.left shipping
+        span.right Free shipping
+    .ordertotal
+      span.tleft
+        span.magicblock order total
+      span.tright $129.00
+    .cartbutton checkout
+    .contin
+      a href="/" continue shopping
   .allprods
     .prodbox
       .prodbox-desc
         .prodboxphoto
-        | EXCLUSIVE T-SHIRT
+          = image_tag("http://pipsum.com/75x75.jpg", alt: "Фотография товара")
+        | exclusive t-shirt
       .prodbox-func
         span.oneprice $110,00
         .countblock
-          span.counter 5
+          input type="number" name="count" class="prodinp"
           .plusblock
         span.totalprice $220,00
         span.deleter
     .prodbox
       .prodbox-desc
         .prodboxphoto
-        | SUPER DAILY BAG
+          = image_tag("http://pipsum.com/75x75.jpg", alt: "Фотография товара")
+        | super daily bag
       .prodbox-func
         span.oneprice $110,00
         .countblock
-          span.counter 5
+          input type="number" name="count" class="prodinp"
           .plusblock
         span.totalprice $220,00
         span.deleter
     .prodbox
       .prodbox-desc
         .prodboxphoto
-        | SLIM SWEATER
+          = image_tag("http://pipsum.com/75x75.jpg", alt: "Фотография товара")
+        | slim sweater
       .prodbox-func
         span.oneprice $110,00
         .countblock
-          span.counter 5
+          input type="number" name="count" class="prodinp"
           .plusblock
         span.totalprice $220,00
         span.deleter
     .prodbox
       .prodbox-desc
         .prodboxphoto
-        | FRESH FASHION SHOES
+          = image_tag("http://pipsum.com/75x75.jpg", alt: "Фотография товара")
+        | fresh fashion shoes
       .prodbox-func
         span.oneprice $110,00
         .countblock
-          span.counter 5
+          input type="number" name="count" class="prodinp"
           .plusblock
         span.totalprice $220,00
         span.deleter
-  .cartbox
-    .cbtitle SHOPPING CART SUMMARY
-    .subship
-      .subtot
-        span.left CART SUBTOTAL
-        span.right $129.00
-      .ship
-        span.left SHIPPING
-        span.right Free shipping
-    .ordertotal
-      span.tleft ORDER TOTAL
-      span.tright $129.00
-    .cartbutton CHECKOUT
-    .contin
-      a href="/" CONTINUE SHOPPING

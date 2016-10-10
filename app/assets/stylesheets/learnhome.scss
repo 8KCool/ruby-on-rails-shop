@@ -12,18 +12,20 @@ $site-green: #34a994;
 #header {
   position: relative;
   padding-top: 108px;
+  text-transform: uppercase;
 }
 
-.logo a {
+#header > a {
   display: block;
   position: absolute;
   top: 0;
-  left: 475px;
+  left: 50%;
+  transform: translateX(-114px);
 }
 
 .login {
+  display: inline-block;
   position: relative;
-  float: left;
   margin-bottom: 20px;
   padding-left: 29px;
   letter-spacing: 1px;
@@ -40,14 +42,11 @@ $site-green: #34a994;
     background: image-url("icons-sprite.png") no-repeat -154px -2px;
   }
 
-  span {
-    font-weight: 600;
-
     a {
       text-decoration: none;
       color: #605f5f;
+      font-weight: 600;
     }
-  }
 }
 
 .cart {
@@ -102,8 +101,8 @@ $site-green: #34a994;
 }
 
 .hotline {
+  display: inline-block;
   position: relative;
-  clear: both;
   margin-bottom: 118px;
   padding-left: 29px;
   font-size: 13px;
@@ -158,28 +157,33 @@ $site-green: #34a994;
   margin-bottom: 45px;
 }
 
-.collection, .sales, .newarrivals, .lbotblock, .rbotblock {
+.fixblock {
   margin-bottom: 20px;
-  background: #ebebeb;
+  margin-left: 20px;
+  vertical-align: top;
 }
 
-.collection, .sales, .lbotblock {
-  margin-right: 20px;
+.fixblock > a {
+  display: block;
 }
 
 .collection {
-  position: relative;
   height: 680px;
   width: 290px;
   float: left;
+  position: relative;
 
-  &:before {
+  img {
     position: absolute;
-    top: 127px;
-    left: 62px;
+    z-index: -1;
+    top: 0;
+    left: 0;
+  }
+
+  .feblaunches {
+    margin: 127px 0 20px 66px;
     height: 43px;
     width: 160px;
-    content: '';
     background: image-url("launches.png") no-repeat;
   }
 
@@ -187,36 +191,47 @@ $site-green: #34a994;
     height: 45px;
     width: 180px;
     margin-left: 57px;
-    margin-top: 189px;
     background-color: $site-green;
     line-height: 45px;
+    text-transform: uppercase;
+
     a {
+      display: block;
       color: #fff;
       font-size: 14px;
       font-weight: 700;
       text-align: center;
+      text-decoration: none;
     }
   }
 }
 
 .sales {
-  position: relative;
+  display: inline-block;
   height: 362px;
   width: 560px;
-  float: left;
+  position: relative;
 
-  a:before {
+  .summersale {
     position: absolute;
-    top: 17px;
-    left: 115px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-top: 17px;
+    margin-left: 115px;
     height: 329px;
     width: 329px;
-    content: '';
-    background: image-url("sale.png") no-repeat;
+    background: image-url("sale.png") no-repeat center center;
+  }
+
+  a {
+    display: block;
   }
 }
 
 .newarrivals {
+  display: inline-block;
   position: relative;
   height: 362px;
   width: 290px;
@@ -234,28 +249,27 @@ $site-green: #34a994;
 }
 
 .lbotblock {
-  float: left;
+  display: inline-block;
   height: 298px;
   width: 280px;
 }
 
 .rbotblock {
-  float: right;
+  display: inline-block;
   height: 298px;
   width: 570px;
 }
 
 /*CONTENT PRODUCTS*/
 
-.content a {
-  display: block;
-  height: inherit;
-  text-decoration: none;
-}
-
-.countprod, .loadmore {
+.countprod, .loadmore > a {
   display: block;
   text-align: center;
+  text-transform: uppercase;
+}
+
+.loadmore > a {
+  text-decoration: none;
 }
 
 .countprod {
@@ -274,18 +288,24 @@ $site-green: #34a994;
   color: #595959;
 }
 
+.products {
+  text-align: center;
+}
+
 .productcard {
   display: inline-block;
   box-sizing: border-box;
   height: 398px;
   width: 279px;
-  margin-right: 14px;
-  margin-bottom: 14px;
+  margin: 0 6px 14px;
   border: 1px solid transparent;
   background-color: #fff;
+  text-transform: uppercase;
+
   &:hover {
     box-shadow: 0 0 0 11px #f5f5f5;
     border: 1px solid #ececec;
+
     .ninjablock {
       display: block;
       width: 277px;
@@ -300,6 +320,7 @@ $site-green: #34a994;
       }
     }
   }
+
   hr {
     margin: 0 auto;
     height: 2px;
@@ -307,14 +328,6 @@ $site-green: #34a994;
     border: none;
     background-color: #ccc;
     margin-bottom: 14px;
-  }
-
-  &:nth-of-type(4n+4) {
-    margin-right: 11px;
-  }
-
-  &:nth-of-type(4n+1) {
-    margin-left: 11px;
   }
 
   .prodfoto {
@@ -329,6 +342,7 @@ $site-green: #34a994;
     font-size: 18px;
     color: #595959;
     background-color: #fff;
+
     .name {
       display: block;
       text-align: center;
@@ -347,6 +361,7 @@ $site-green: #34a994;
         font-size: 14px;
         font-weight: 300;
         text-decoration: line-through;
+        margin-right: 5px;
       }
 
       .price {
@@ -370,6 +385,7 @@ $site-green: #34a994;
   .prodbutton {
     position: absolute;
     cursor: pointer;
+    user-select: none;
     height: 32px;
     width: 180px;
     opacity: 0;
@@ -397,6 +413,7 @@ $site-green: #34a994;
   margin-bottom: 47px;
 
   h3 {
+    text-transform: uppercase;
     font-size: 16px;
     letter-spacing: 1px;
     line-height: 30px;
@@ -409,17 +426,17 @@ $site-green: #34a994;
 }
 
 .footer-logo {
-  position: absolute;
-  top: -66px;
-  left: 525px;
+  position: relative;
+  height: 1px;
+  text-align: center;
+  top: -177px;
 }
 
 .contact {
   float: left;
   width: 270px;
 
-  span {
-    display: inline-block;
+  .naming {
     font-weight: 700;
     color: #595959;
     letter-spacing: 1px;
@@ -487,7 +504,7 @@ $site-green: #34a994;
     padding-right: 120px;
   }
 
-  li:before {
+  a:before {
     content:  "-";
     position: relative;
     left: -5px;

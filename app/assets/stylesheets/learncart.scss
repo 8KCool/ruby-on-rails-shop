@@ -2,9 +2,11 @@ $site-green: #34a994;
 
 
 .allprods {
-  margin-top: 9px;
-  float: left;
+  display: inline-block;
   width: 880px;
+  margin-top: 9px;
+  margin-bottom: 62px;
+  text-transform: uppercase;
 
   .prodbox {
     display: flex;
@@ -60,26 +62,38 @@ $site-green: #34a994;
     }
 
     &:last-child {
-      margin-bottom: 62px;
+      margin-bottom: 0;
     }
   }
 }
 
-.prodbox-func .countblock{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  border: 1px solid #ddd;
+.prodbox-func .countblock {
+  position: relative;
   height: 40px;
   width: 72px;
   font-size: 15px;
   font-weight: 400;
   color: #595959;
 
+  .prodinp {
+    box-sizing: border-box;
+    height: 40px;
+    width: 72px;
+    padding-right: 35px;
+    padding-left: 12px;
+    border: 1px solid #ddd;
+    outline-color: #ddd;
+
+    &:focus {
+      border: 1px solid transparent;
+    }
+  }
+
   .plusblock {
     cursor: pointer;
-    position: relative;
+    position: absolute;
+    top: 7px;
+    right: 6px;
     height: 27px;
     width: 27px;
     background-color: #efefef;
@@ -99,6 +113,13 @@ $site-green: #34a994;
 
 }
 
+/* disable arrows in input */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 /* Инфа по заказу и кнопка заказать*/
 .cartbox {
   float: right;
@@ -111,6 +132,7 @@ $site-green: #34a994;
     color: #595959;
     font-size: 16.64px;
     border-bottom: 2px solid #ddd;
+    text-transform: uppercase;
   }
 
   .subship {
@@ -124,6 +146,7 @@ $site-green: #34a994;
       display: flex;
       justify-content: space-between;
       margin-bottom: 20px;
+      text-transform: uppercase;
     }
 
     .ship {
@@ -135,6 +158,7 @@ $site-green: #34a994;
       font-weight: 400;
       color: #595959;
       font-size: 15px;
+      text-transform: uppercase;
     }
 
     .right {
@@ -152,9 +176,16 @@ $site-green: #34a994;
     letter-spacing: 1px;
     font-weight: 700;
     color: #595959;
+    text-transform: uppercase;
 
     .tleft {
       font-size: 15px;
+
+      .magicblock {
+        display: inline-block;
+        padding-top: 17px;
+        line-height: 14px;
+      }
     }
 
     .tright {
@@ -173,6 +204,7 @@ $site-green: #34a994;
     font-size: 19.03px;
     font-weight: 700;
     text-align: center;
+    text-transform: uppercase;
   }
   .contin {
     height: 50px;
@@ -181,8 +213,11 @@ $site-green: #34a994;
     letter-spacing: 1px;
     line-height: 50px;
     text-align: center;
+    text-transform: uppercase;
     a {
       color: #676666;
+      display: block;
+      text-decoration: none;
     }
   }
 }
