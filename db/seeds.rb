@@ -29,3 +29,25 @@
 # sig.save
 
 # puts "#{time_point_string}: Seeding is done!"
+
+NavItem.create!([
+  { title: "JACKETS", url_type: 0, url_text: "#" },
+  { title: "SWEATERS", url_type: 0, url_text: "#" },
+  { title: "DRESSES", url_type: 0, url_text: "#" },
+  { title: "SKIRTS", url_type: 0, url_text: "#" },
+  { title: "PANTS", url_type: 0, url_text: "#" },
+  { title: "SHORTS", url_type: 0, url_text: "#" },
+  { title: "SHOES", url_type: 0, url_text: "#" },
+  { title: "ACCESSORIES", url_type: 0, url_text: "#" }
+])
+
+Category.create!([
+  { name: "JACKETS" },
+  { name: "SWEATERS" },
+  { name: "DRESSES" },
+  { name: "SKIRTS" },
+  { name: "PANTS" },
+  { name: "SHORTS" },
+  { name: "SHOES" },
+  { name: "ACCESSORIES"}
+])

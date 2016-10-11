@@ -1,5 +1,5 @@
 ActiveAdmin.register Product do
-  permit_params :name, :image, :price, :count, :prior, :hided
+  permit_params :name, :image, :price, :saleprice, :saletime, :count, :prior, :hided, :category_id
 
   ### Disable some actions
   actions :all
@@ -9,6 +9,8 @@ ActiveAdmin.register Product do
     column :name
     column :image
     column :price
+    column :saleprice
+    column :saletime
     column :count
     column :prior
     column :hided
@@ -19,6 +21,8 @@ ActiveAdmin.register Product do
 
   filter :name
   filter :price
+  filter :saleprice
+  filter :saletime
   filter :count
   filter :prior
   filter :hided
@@ -33,6 +37,8 @@ ActiveAdmin.register Product do
       row :name
       row (:image) { image_tag(product.image.url) unless product.image.blank? }
       row :price
+      row :saleprice
+      row :saletime
       row :count
       row :prior
     end
@@ -61,12 +67,22 @@ form html: { multipart: true } do |f|
         ].join.html_safe
 
       f.input :price
+      f.input :saleprice
+      f.input :saletime
       f.input :count
       f.input :prior
       f.input :hided
+      f.input :category, include_blank: false
     end
 
     #Seo::FormtasticSeoFieldset::build f
+    # f.inputs do
+    #   f.belongs_to :category, { heading: 'Product category',
+    #                       new_record: 'Add Category',
+    #                       sortable: :created_at } do |a|
+    #     a.input :name
+    #   end
+    # end
 
     f.actions
 end

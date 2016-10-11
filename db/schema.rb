@@ -91,14 +91,17 @@ ActiveRecord::Schema.define(version: 20161010083618) do
   add_index "pages", ["prior"], name: "index_pages_on_prior", using: :btree
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",                       null: false
+    t.string   "name",                        null: false
     t.string   "image"
-    t.float    "price",                      null: false
-    t.integer  "count",      default: 0,     null: false
-    t.integer  "prior",      default: 9,     null: false
-    t.boolean  "hided",      default: false, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.float    "price",                       null: false
+    t.float    "saleprice"
+    t.datetime "saletime"
+    t.integer  "count",       default: 0,     null: false
+    t.integer  "prior",       default: 9,     null: false
+    t.boolean  "hided",       default: false, null: false
+    t.integer  "category_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "products", ["hided"], name: "index_products_on_hided", using: :btree

@@ -30,9 +30,11 @@
           span.name
             = product.name
           span.sumprice
-            // span.saleprice $329,00
-            span.price
-              = "$#{product.price}"
+          - if (product.saleprice > 0 && product.saletime > DateTime.now)
+            span.saleprice = "$#{product.price}"
+            span.price = "$#{product.saleprice}"
+          - else
+            span.price = "$#{product.price}"
         .ninjablock
           .prodbutton add to cart
 
