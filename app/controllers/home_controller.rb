@@ -1,7 +1,11 @@
 class HomeController < FrontendController
   def index
-    @seo_carrier = OpenStruct.new seo_descr: @page.seo_descr,
-                                  seo_keywords: @page.seo_keywords
+    @products_list = Product.visibles.ordered
+
+    respond_to do |format|
+      format.html
+    end
+
   end
 
   def cart

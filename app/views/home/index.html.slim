@@ -20,87 +20,21 @@
         = image_tag("http://pipsum.com/570x298.jpg", alt: "Фотография товара")
   .products
     .countprod we have over 2000 products in our shop
-    .productcard
-      .prodfoto
-        = image_tag("http://pipsum.com/277x300.jpg", alt: "Фотография товара")
-      hr /
-      .prodinfo
-        span.name slimm pants
-        span.sumprice
-          span.price $279,00
-      .ninjablock
-        .prodbutton add to cart
-    .productcard
-      .prodfoto
-        = image_tag("http://pipsum.com/277x300.jpg", alt: "Фотография товара")
-      hr /
-      .prodinfo
-        span.name low slim jeans
-        span.sumprice
-          span.saleprice $329,00
-          span.price $200,00
-      .ninjablock
-        .prodbutton add to cart
-    .productcard
-      .prodfoto
-        = image_tag("http://pipsum.com/277x300.jpg", alt: "Фотография товара")
-      hr /
-      .prodinfo
-        span.name gummi sweater
-        span.sumprice
-          span.price $279,00
-      .ninjablock
-        .prodbutton add to cart
-    .productcard
-      .prodfoto
-        = image_tag("http://pipsum.com/277x300.jpg", alt: "Фотография товара")
-      hr /
-      .prodinfo
-          span.name low slim jeans
+
+    - @products_list.each do |product|
+      .productcard
+        .prodfoto
+          = image_tag(product.image.url(:standard), alt: "Фотография товара")
+        hr /
+        .prodinfo
+          span.name
+            = product.name
           span.sumprice
-            span.price $350,00
-      .ninjablock
-        .prodbutton add to cart
-    .productcard
-      .prodfoto
-        = image_tag("http://pipsum.com/277x300.jpg", alt: "Фотография товара")
-      hr /
-      .prodinfo
-        span.name t-shirt blue
-        span.sumprice
-          span.price $150,00
-      .ninjablock
-        .prodbutton add to cart
-    .productcard
-      .prodfoto
-        = image_tag("http://pipsum.com/277x300.jpg", alt: "Фотография товара")
-      hr /
-      .prodinfo
-        span.name fashion bag
-        span.sumprice
-          span.saleprice $329,00
-          span.price $132,00
-      .ninjablock
-        .prodbutton add to cart
-    .productcard
-      .prodfoto
-        = image_tag("http://pipsum.com/277x300.jpg", alt: "Фотография товара")
-      hr /
-      .prodinfo
-        span.name very elegant dress
-        span.sumprice
-          span.price $52,00
-      .ninjablock
-        .prodbutton add to cart
-    .productcard
-      .prodfoto
-        = image_tag("http://pipsum.com/277x300.jpg", alt: "Фотография товара")
-      hr /
-      .prodinfo
-        span.name low slim jeans
-        span.sumprice
-          span.price $107,00
-      .ninjablock
-        .prodbutton add to cart
+            // span.saleprice $329,00
+            span.price
+              = "$#{product.price}"
+        .ninjablock
+          .prodbutton add to cart
+
     .loadmore
       a href="/#more" + load more products
