@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 20161010083618) do
     t.string   "name",                        null: false
     t.string   "image"
     t.float    "price",                       null: false
-    t.float    "saleprice"
+    t.float    "saleprice",   default: 0.0
     t.datetime "saletime"
     t.integer  "count",       default: 0,     null: false
     t.integer  "prior",       default: 9,     null: false

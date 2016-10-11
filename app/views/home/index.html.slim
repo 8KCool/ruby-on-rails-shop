@@ -19,24 +19,27 @@
       a href="/#rbotblock"
         = image_tag("http://pipsum.com/570x298.jpg", alt: "Фотография товара")
   .products
-    .countprod we have over 2000 products in our shop
+    - if @products_list.any?
+      .countprod = "we have over #{@products_list.count - 1} products in our shop"
 
-    - @products_list.each do |product|
-      .productcard
-        .prodfoto
-          = image_tag(product.image.url(:standard), alt: "Фотография товара")
-        hr /
-        .prodinfo
-          span.name
-            = product.name
-          span.sumprice
-          - if (product.saleprice > 0 && product.saletime > DateTime.now)
-            span.saleprice = "$#{product.price}"
-            span.price = "$#{product.saleprice}"
-          - else
-            span.price = "$#{product.price}"
-        .ninjablock
-          .prodbutton add to cart
-
-    .loadmore
-      a href="/#more" + load more products
+      - @products_list.each do |product|
+        .productcard
+          .prodfoto
+            - if product.image.present?
+              = image_tag(product.image.url(:standard), alt: "Фотография товара")
+          hr /
+          .prodinfo
+            span.name = product.name
+            span.sumprice
+            - if (product.saleprice > 0 && product.saletime > DateTime.now)
+              span.saleprice = number_to_currency(product.price, precision: 2, locale: :en)
+              span.price = number_to_currency(product.saleprice, precision: 2, locale: :en)
+            - else
+              span.price = number_to_currency(product.price, precision: 2, locale: :en)
+          .ninjablock
+            .prodbutton add to cart
+      - if @products_list.count > 8
+        .loadmore
+          a href="/#more" + load more products
+    - else
+      .countprod = "we haven't got any products in our shop, sorry"

@@ -7,7 +7,10 @@ ActiveAdmin.register Product do
   ### Index as table
   index download_links: false do
     column :name
-    column :image
+    column :image do |product|
+      image_tag(product.image.url(:cartversion)) unless product.image.blank?
+    end
+    # column (:image) { image_tag(self.image.url(:standard)) unless self.image.blank? }
     column :price
     column :saleprice
     column :saletime
