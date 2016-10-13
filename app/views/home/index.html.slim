@@ -23,7 +23,7 @@
       .countprod = "we have over #{@products_list.count - 1} products in our shop"
 
       - @products_list.each do |product|
-        .productcard
+        .productcard data-id="#{product.id}" data-name="#{product.name}" data-price="#{product.price}"
           .prodfoto
             - if product.image.present?
               = image_tag(product.image.url(:standard), alt: "Фотография товара")
