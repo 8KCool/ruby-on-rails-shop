@@ -41,6 +41,8 @@ NavItem.create!([
   { title: "ACCESSORIES", url_type: 0, url_text: "#" }
 ])
 
+30.times { |i| Product.create!([ { name: "product example#{i}", price: 450.07, count: 300, category_id: 8 } ]) }
+
 Category.create!([
   { name: "JACKETS" },
   { name: "SWEATERS" },
@@ -49,5 +51,5 @@ Category.create!([
   { name: "PANTS" },
   { name: "SHORTS" },
   { name: "SHOES" },
-  { name: "ACCESSORIES"}
+  { name: "ACCESSORIES" }
 ])
