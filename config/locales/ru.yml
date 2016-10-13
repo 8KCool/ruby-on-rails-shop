@@ -106,7 +106,7 @@ ru:
         hided: "Скрыт?"
         created_at: "Добавлен"
         updated_at: "Обновлен"
-        category_id: "Категория"
+        category: "Категория"
       setting:
         name:  "Название"
         value: "Значение"

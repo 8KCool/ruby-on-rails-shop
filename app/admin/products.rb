@@ -19,6 +19,7 @@ ActiveAdmin.register Product do
     column :hided
     column :created_at
     column :updated_at
+    column :category
     actions
   end
 
@@ -31,6 +32,7 @@ ActiveAdmin.register Product do
   filter :hided
   filter :created_at
   filter :updated_at
+  filter :category
 
 ## SHOW
 
@@ -44,6 +46,7 @@ ActiveAdmin.register Product do
       row :saletime
       row :count
       row :prior
+      row :category
     end
 
     #seo_panel_for news
