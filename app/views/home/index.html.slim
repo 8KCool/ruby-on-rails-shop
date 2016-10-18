@@ -20,26 +20,10 @@
         = image_tag("http://pipsum.com/570x298.jpg", alt: "Фотография товара")
   .products
     - if @products_list.any?
-      .countprod = "we have over #{@products_list.count - 1} products in our shop"
-
-      - @products_list.each do |product|
-        .productcard data-id="#{product.id}" data-name="#{product.name}" data-price="#{product.price}"
-          .prodfoto
-            - if product.image.present?
-              = image_tag(product.image.url(:standard), alt: "Фотография товара")
-          hr /
-          .prodinfo
-            span.name = product.name
-            span.sumprice
-            - if (product.saleprice > 0 && product.saletime > DateTime.now)
-              span.saleprice = number_to_currency(product.price, precision: 2, locale: :en)
-              span.price = number_to_currency(product.saleprice, precision: 2, locale: :en)
-            - else
-              span.price = number_to_currency(product.price, precision: 2, locale: :en)
-          .ninjablock
-            .prodbutton add to cart
-      - if @products_list.count > 8
-        .loadmore
-          a href="/#more" + load more products
+      .countprod = "we have over #{@products_list.total_count - 1} products in our shop"
+      = render 'products'
+      .loadmore
+        - if @products_list.count >= 8
+          = link_to "+ load more products", { page: 2 }, remote: true
     - else
       .countprod = "we haven't got any products in our shop, sorry"

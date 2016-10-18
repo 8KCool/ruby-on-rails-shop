@@ -6,6 +6,7 @@ ActiveAdmin.register Category do
 
   ### Index as table
   index download_links: false do
+    selectable_column
     column :name
     column :hided
     column :created_at

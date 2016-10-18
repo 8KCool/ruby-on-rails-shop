@@ -6,6 +6,7 @@ ActiveAdmin.register Product do
 
   ### Index as table
   index download_links: false do
+    selectable_column
     column :name
     column :image do |product|
       image_tag(product.image.url(:cartversion)) unless product.image.blank?
@@ -33,6 +34,19 @@ ActiveAdmin.register Product do
   filter :created_at
   filter :updated_at
   filter :category
+
+  batch_action :show, confirm: "Уверены?" do |ids|
+    Product.find(ids).each do |product|
+      product.update hided: false
+    end
+    redirect_to collection_path, alert: "У указанных товаров убран флаг скрытия."
+  end
+  batch_action :hide, confirm: "Уверены?" do |ids|
+    Product.find(ids).each do |product|
+      product.update hided: true
+    end
+    redirect_to collection_path, alert: "Указанные товары были скрыты."
+  end
 
 ## SHOW
 

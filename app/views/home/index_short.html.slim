@@ -1,0 +1,4 @@
+= render 'products'
+.loadmore
+  - if @products_list.count >= 8
+    = link_to "+ load more products", { page: (params[:page] ? params[:page].to_i + 1 : 2) }, remote: true

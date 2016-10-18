@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
   mount_uploader :image, ProductsImageUploader
-
+  paginates_per 8
   belongs_to :category
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 30 }
