@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   # pages
   get '/cart', to: 'cart#index'
   post '/cart', to: 'cart#cartls'
-  post '/order', to: 'order#make'
+  post '/makeorder', to: 'order#make'
 
   get '*page_path' => 'pages#show', as: :page
 

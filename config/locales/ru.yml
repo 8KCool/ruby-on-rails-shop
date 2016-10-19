@@ -51,6 +51,11 @@ ru:
         few:   "Продукта"
         many:  "Продуктов"
         other: "Продукты"
+      order:
+        one:    "Заказ"
+        few:    "Заказа"
+        many:   "Заказов"
+        other:  "Заказы"
       setting:
         one:   "Настройка"
         few:   "Настройки"
@@ -107,6 +112,11 @@ ru:
         created_at: "Добавлен"
         updated_at: "Обновлен"
         category: "Категория"
+      order:
+        products: "Товары"
+        count:    "Количество товаров"
+        cost:     "Стоимость заказа"
+        status:   "Статус заказа"
       setting:
         name:  "Название"
         value: "Значение"

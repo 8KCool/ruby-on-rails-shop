@@ -1,78 +1,74 @@
 ActiveAdmin.register Order do
-#   permit_params :name, :image, :price, :saleprice, :saletime, :count, :prior, :hided, :category_id
+  permit_params :products, :count, :cost, :status
 
-#   ### Disable some actions
-#   actions :all
+  ### Disable some actions
+  actions :all
 
-#   ### Index as table
-#   index download_links: false do
-#     selectable_column
-#     column :name
-#     column :image do |product|
-#       image_tag(product.image.url(:cartversion)) unless product.image.blank?
-#     end
-#     # column (:image) { image_tag(self.image.url(:standard)) unless self.image.blank? }
-#     column :price
-#     column :saleprice
-#     column :saletime
-#     column :count
-#     column :prior
-#     column :hided
-#     column :created_at
-#     column :updated_at
-#     column :category
-#     actions
-#   end
+  ### Index as table
+  index download_links: false do
+    selectable_column
+    column :products
+    column :count
+    column :cost
+    column :status
+    column :created_at
+    column :updated_at
+    actions
+  end
 
-#   filter :name
-#   filter :price
-#   filter :saleprice
-#   filter :saletime
-#   filter :count
-#   filter :prior
-#   filter :hided
-#   filter :created_at
-#   filter :updated_at
-#   filter :category
+  filter :cost
+  filter :created_at
+  filter :updated_at
 
-#   batch_action :show, confirm: "Уверены?" do |ids|
-#     Product.find(ids).each do |product|
-#       product.update hided: false
-#     end
-#     redirect_to collection_path, alert: "У указанных товаров убран флаг скрытия."
-#   end
-#   batch_action :hide, confirm: "Уверены?" do |ids|
-#     Product.find(ids).each do |product|
-#       product.update hided: true
-#     end
-#     redirect_to collection_path, alert: "Указанные товары были скрыты."
-#   end
+  batch_action :waiting, confirm: "Уверены?" do |ids|
+    Order.find(ids).each do |order|
+      order.update status: 0
+    end
+    redirect_to collection_path, alert: "Изменен статус заказа на: Ожидание."
+  end
 
-# ## SHOW
+  batch_action :confirmed, confirm: "Уверены?" do |ids|
+    Order.find(ids).each do |order|
+      order.update status: 1
+    end
+    redirect_to collection_path, alert: "Изменен статус заказа на: Подтверждён."
+  end
 
-#   show do
+  batch_action :rejected, confirm: "Уверены?" do |ids|
+    Order.find(ids).each do |order|
+      order.update status: 2
+    end
+    redirect_to collection_path, alert: "Изменен статус заказа на: Отменён."
+  end
 
-#     attributes_table do
-#       row :name
-#       row (:image) { image_tag(product.image.url) unless product.image.blank? }
-#       row :price
-#       row :saleprice
-#       row :saletime
-#       row :count
-#       row :prior
-#       row :category
-#     end
+  batch_action :shipped, confirm: "Уверены?" do |ids|
+    Order.find(ids).each do |order|
+      order.update status: 4
+    end
+    redirect_to collection_path, alert: "Изменен статус заказа на: Отгружен."
+  end
 
-#     #seo_panel_for news
+## SHOW
 
-#     #static_files_for news
-#   end
+  show do
 
-#   sidebar 'Дополнительные данные', only: :show do
-#     attributes_table_for product do
-#       row(:hided) { product.hided? ? t('yep') : t('nope') }
-#       row :created_at
-#       row :updated_at
-#     end
-#   end
+    attributes_table do
+      row :products
+      row :count
+      row :cost
+      row :status
+    end
+
+    #seo_panel_for news
+
+    #static_files_for news
+  end
+
+  sidebar 'Дополнительные данные', only: :show do
+    attributes_table_for order do
+      row :created_at
+      row :updated_at
+    end
+  end
+
 end
