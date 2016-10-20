@@ -195,11 +195,36 @@ function initProdEvents() {
   });
 
   $('.cartbutton').click(function (){
-    localStorage.clear();
-    $(".pcontent").replaceWith('<div class="pcontent holder clearfix"><div class="cartbox">' +
-        '</div><div class="allprods"><div class="prodbox"><div class="prodbox-desc">your cart is empty</div></div></div></div>');
-    $('.circle').css('display', 'none');
-    $('.tpricespan').text("empty");
+    var idCount = {};
+    var uniqCount = 0;
+
+    for (key in products) {
+          uniqCount += 1;
+          var prodName = "product" + uniqCount;
+          idCount[prodName] = {};
+          idCount[prodName]['id'] = products[key]['id'];
+          idCount[prodName]['count'] = products[key]['count'];
+      }
+
+      $.ajax({
+        url: '/makeorder',
+        type: 'post',
+        data: { 'idCount': idCount },
+        success: function(data, status, xhr){
+          alert("Заказ принят!");
+          localStorage.clear();
+          $(".pcontent").replaceWith('<div class="pcontent holder clearfix"><div class="cartbox">' +
+          '</div><div class="allprods"><div class="prodbox"><div class="prodbox-desc">' +
+          'your cart is empty</div></div></div></div>');
+          $('.circle').css('display', 'none');
+          $('.tpricespan').text("empty");
+        },
+        error: function(xhr, status, error){
+          console.log(xhr);
+          alert(error);
+        }
+      });
+
   });
 }
 

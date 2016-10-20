@@ -1,5 +1,5 @@
 ActiveAdmin.register Order do
-  permit_params :products, :count, :cost, :status
+  permit_params :total, :status
 
   ### Disable some actions
   actions :all
@@ -7,16 +7,14 @@ ActiveAdmin.register Order do
   ### Index as table
   index download_links: false do
     selectable_column
-    column :products
-    column :count
-    column :cost
+    column :total
     column :status
     column :created_at
     column :updated_at
     actions
   end
 
-  filter :cost
+  filter :total
   filter :created_at
   filter :updated_at
 
@@ -53,9 +51,7 @@ ActiveAdmin.register Order do
   show do
 
     attributes_table do
-      row :products
-      row :count
-      row :cost
+      row :total
       row :status
     end
 

@@ -1,30 +1,30 @@
 class OrderController < FrontendController
   def make
 
-    # @cart_list =  params[:idCount].map { |key, value| Product.visibles.find_by(id: value['id']) }
-    # @count_list = []
+    @total_price = 0
 
-    # params[:idCount].each do |key, value|
-    #   @count_list.push(value['count'])
-    # end
+    @cart_list =  params[:idCount].map do |key, value|
+      product = Product.visibles.find_by(id: value['id'])
+      if (product.saleprice > 0 && product.saletime > DateTime.now)
+        @total_price += product.saleprice * value['count'].to_i
+        {
+          product_id: product.id,
+          count: value['count'].to_i,
+          price: product.saleprice
+        }
+      else
+        @total_price += product.price * value['count'].to_i
+        {
+          product_id: product.id,
+          count: value['count'].to_i,
+          price: product.price
+        }
+      end
+    end
 
-    # @total_price = 0
+    Order.create!({ total: @total_price.round(2), order_items_attributes: @cart_list });
 
-    # @cart_list.zip(@count_list).each do |cart, count|
-    #   if cart
-    #     if (cart.saleprice > 0 && cart.saletime > DateTime.now)
-    #       @total_price += cart.saleprice * count.to_f
-    #     else
-    #       @total_price += cart.price * count.to_f
-    #     end
-    #   end
-    # end
-
-    # respond_to do |format|
-    #   format.html do
-    #     render "cartls", layout: false
-    #   end
-    # end
+    render nothing: true
 
   end
 end
