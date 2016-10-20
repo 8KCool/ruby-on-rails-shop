@@ -10,5 +10,5 @@ class Product < ActiveRecord::Base
   validates :prior, numericality: { only_integer: true }
 
   scope :visibles, -> { where(hided: false) }
-  scope :ordered, -> { order(prior: :asc) }
+  scope :ordered, -> { order(prior: :asc, id: :desc) }
 end
