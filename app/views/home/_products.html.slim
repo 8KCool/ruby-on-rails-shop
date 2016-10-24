@@ -2,7 +2,7 @@
   - if (product.saleprice > 0 && product.saletime > DateTime.now)
     .productcard data-id="#{product.id}" data-name="#{product.name}" data-price="#{product.saleprice}"
       .prodfoto
-        = image_tag(product.image.url(:standard), alt: "Фотография товара #{product.name}")
+        = image_tag(product.image.standard.url, alt: "Фотография товара #{product.name}")
       hr /
       .prodinfo
         span.name = product.name
@@ -14,7 +14,7 @@
   - else
     .productcard data-id="#{product.id}" data-name="#{product.name}" data-price="#{product.price}"
       .prodfoto
-        = image_tag(product.image.url(:standard), alt: "Фотография товара #{product.name}")
+        = image_tag(product.image.standard.url, alt: "Фотография товара #{product.name}")
       hr /
       .prodinfo
         span.name = product.name
