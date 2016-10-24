@@ -9,7 +9,7 @@ ActiveAdmin.register Product do
     selectable_column
     column :name
     column :image do |product|
-      image_tag(product.image.url(:cartversion)) unless product.image.blank?
+      image_tag(product.image.url(:cartversion))
     end
     # column (:image) { image_tag(self.image.url(:standard)) unless self.image.blank? }
     column :price
@@ -54,7 +54,7 @@ ActiveAdmin.register Product do
 
     attributes_table do
       row :name
-      row (:image) { image_tag(product.image.url) unless product.image.blank? }
+      row (:image) { image_tag(product.image.url) }
       row :price
       row :saleprice
       row :saletime
