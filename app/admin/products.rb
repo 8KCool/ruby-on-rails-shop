@@ -63,9 +63,6 @@ ActiveAdmin.register Product do
       row :category
     end
 
-    #seo_panel_for news
-
-    #static_files_for news
   end
 
   sidebar 'Дополнительные данные', only: :show do
@@ -94,15 +91,6 @@ form html: { multipart: true } do |f|
       f.input :hided
       f.input :category, include_blank: false
     end
-
-    # Seo::FormtasticSeoFieldset::build f
-    # f.inputs do
-    #   f.belongs_to :category, { heading: 'Product category',
-    #                       new_record: 'Add Category',
-    #                       sortable: :created_at } do |a|
-    #     a.input :name
-    #   end
-    # end
 
     f.actions
 end
