@@ -4,7 +4,8 @@ class CartController < FrontendController
 
   def cartls
 
-    @cart_list =  params[:idCount].map { |key, value| Product.visibles.find_by(id: value['id']) }
+    @cart_list =  params[:idCount].map { |key, value| Product.find_by(id: value['id']) }
+
     @count_list = []
 
     params[:idCount].each do |key, value|
@@ -14,7 +15,7 @@ class CartController < FrontendController
     @total_price = 0
 
     @cart_list.zip(@count_list).each do |cart, count|
-      if cart
+      if (cart && cart.hided)
         if (cart.saleprice > 0 && cart.saletime > DateTime.now)
           @total_price += cart.saleprice * count.to_f
         else
