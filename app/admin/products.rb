@@ -82,7 +82,7 @@ form html: { multipart: true } do |f|
 
       f.input :name
       f.input :image, hint:
-        [ "Изображение будет уменьшено до размеров 279 на 300 пикселей, если оно большего размера.",
+        [ "Изображение будет уменьшено до размеров 277 на 300 пикселей, если оно большего размера.",
           f.object.image? ? "<br>Текущее изображение:<br>#{image_tag(f.object.image.url(:standard))}" : ""
         ].join.html_safe
 
@@ -90,12 +90,12 @@ form html: { multipart: true } do |f|
       f.input :saleprice
       f.input :saletime
       f.input :count
-      f.input :prior
+      f.input :prior, hint: "Чем меньше значение, тем раньше отображается продукт в списке."
       f.input :hided
       f.input :category, include_blank: false
     end
 
-    #Seo::FormtasticSeoFieldset::build f
+    # Seo::FormtasticSeoFieldset::build f
     # f.inputs do
     #   f.belongs_to :category, { heading: 'Product category',
     #                       new_record: 'Add Category',
