@@ -1,24 +1,16 @@
 - @products_list.each do |product|
-  - if (product.saleprice > 0 && product.saletime > DateTime.now)
-    .productcard data-id="#{product.id}" data-name="#{product.name}" data-price="#{product.saleprice}"
-      .prodfoto
-        = image_tag(product.image.standard.url, alt: "Фотография товара #{product.name}")
-      hr /
-      .prodinfo
-        span.name = product.name
-        span.sumprice
+  - have_saleprice = product.saleprice > 0 && product.saletime > DateTime.now
+  .productcard data-id="#{product.id}" data-name="#{product.name}" data-price="#{have_saleprice ? product.saleprice : product.price}"
+    .prodfoto
+      = image_tag(product.image.standard.url, alt: "Фотография товара #{product.name}")
+    hr /
+    .prodinfo
+      span.name = product.name
+      span.sumprice
+        - if have_saleprice
           span.saleprice = number_to_currency(product.price, precision: 2, locale: :en)
           span.price = number_to_currency(product.saleprice, precision: 2, locale: :en)
-      .ninjablock
-        .prodbutton add to cart
-  - else
-    .productcard data-id="#{product.id}" data-name="#{product.name}" data-price="#{product.price}"
-      .prodfoto
-        = image_tag(product.image.standard.url, alt: "Фотография товара #{product.name}")
-      hr /
-      .prodinfo
-        span.name = product.name
-        span.sumprice
+        - else
           span.price = number_to_currency(product.price, precision: 2, locale: :en)
-      .ninjablock
-        .prodbutton add to cart
+    .ninjablock
+      .prodbutton add to cart
