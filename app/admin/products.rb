@@ -54,7 +54,7 @@ ActiveAdmin.register Product do
 
     attributes_table do
       row :name
-      row (:image) { image_tag(product.image.url) unless product.image.blank? }
+      row (:image) { image_tag(product.image.url) }
       row :price
       row :saleprice
       row :saletime

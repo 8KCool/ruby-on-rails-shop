@@ -21,6 +21,10 @@ ru:
       labels:
         hide: "Скрыть"
         show: "Не скрывать"
+        waiting: "Установить статус: Ожидание у"
+        confirmed: "Установить статус: Подтвержден у"
+        rejected: "Установить статус: Отменен у"
+        shipped: "Установить статус: Отгружен у"
     hints:
       slug: 'Уникальная завершающая часть URL адреса, которая обозначает эту страницу. Например, для адреса `example.com/pages/foton.html` часть `foton` - slug страницы. <a href="http://en.wikipedia.org/wiki/Slug_(web_publishing)#Slug" target="_blank">Подробнее</a>.<br>Если оставить поле пустым, то slug будет сгенерирован на основе заголовка.'
   feedback:
@@ -113,10 +117,14 @@ ru:
         updated_at: "Обновлен"
         category: "Категория"
       order:
-        products: "Товары"
-        count:    "Количество товаров"
-        cost:     "Стоимость заказа"
+        total:     "Стоимость заказа"
         status:   "Статус заказа"
+        created_at:  "Создан"
+        updated_at:  "Обновлён"
+      order_item:
+        product: "Продукт"
+        count: "Количество продуктов"
+        price: "Цена товара на момент заказа"
       setting:
         name:  "Название"
         value: "Значение"

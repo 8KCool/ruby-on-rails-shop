@@ -1,12 +1,17 @@
 ActiveAdmin.register Order do
-  permit_params :total, :status
-
+  permit_params :total, :status, order_items_attributes: [:product_id, :count, :price, :_destroy]
   ### Disable some actions
   actions :all
 
   ### Index as table
   index download_links: false do
     selectable_column
+    # column "slug", :slug, sortable: :slug do |post|
+    #   link_to post.slug, post_path(post.slug), target: '_blank'
+    # end
+    # column "slug", :slug, sortable: :slug do |post|
+    #   link_to post.slug, post_path(post.slug), target: '_blank'
+    # end
     column :total
     column :status
     column :created_at
@@ -51,7 +56,10 @@ ActiveAdmin.register Order do
   show do
 
     attributes_table do
-      row :total
+      row (:total) {"$" + order.total.to_s }
+      row ("Список продуктов") { order.order_items.product }
+      row ("Количество продуктов") { "Заказано: " + order.order_items.pluck(:count).join(', ') + " На складе: " + order.products.pluck(:count).join(', ')}
+      row ("Цена товара на момент заказа") { "$" + order.order_items.pluck(:price).join(', $') }
       row :status
     end
 
@@ -67,4 +75,27 @@ ActiveAdmin.register Order do
     end
   end
 
+
+  form html: { multipart: true } do |f|
+      f.inputs "" do
+
+        f.input :total
+        f.input :status
+      end
+
+      #Seo::FormtasticSeoFieldset::build f
+
+      f.inputs do
+        f.has_many :order_items, { heading: 'Заказанные товары',
+                            new_record: 'Добавить товар',
+                            allow_destroy: true,
+                            sortable: :created_at } do |a|
+          a.input :product, include_blank: false
+          a.input :count
+          a.input :price
+        end
+      end
+
+      f.actions
+  end
 end
