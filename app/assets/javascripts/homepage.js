@@ -1,41 +1,28 @@
-var products = {};
-var deleteCount = 0;
-
-var uniqCount = 0 + parseInt(deleteCount);
-var itemCount = 0;
-var tprice = 0;
+var products = {},
+    deleteCount = 0,
+    uniqCount = 0,
+    itemCount = 0,
+    tprice = 0;
 
 function initStorage() {
-    products = JSON.parse(localStorage['products']);
+  products = JSON.parse(localStorage['products']);
 
-    for (key in products) {
-      uniqCount += 1;
-      itemCount += products[key]['count'];
-      tprice += products[key]['count'] * products[key]['price'];
-    }
+  for (key in products) {
+    uniqCount += 1;
+    itemCount += products[key]['count'];
+    tprice += products[key]['count'] * products[key]['price'];
+  }
 
-    $('.circle').data('count', itemCount).css('display', 'block');
+  $('.circle').data('count', itemCount).css('display', 'block');
 
-    if (parseInt($('.circle').data('count')) < 1000) {
-      $('.circle').text($('.circle').data('count')).css('display', 'block');
-    } else {
-      $('.circle').text('∞').css('display', 'block');
-    }
+  if (parseInt($('.circle').data('count')) < 1000) {
+    $('.circle').text($('.circle').data('count'));
+  } else {
+    $('.circle').text('∞').css('display', 'block');
+  }
 
-    $('.tpricespan').text("$" + tprice.toFixed(2));
+  $('.tpricespan').text("$" + tprice.toFixed(2));
 }
-
-if (localStorage['products'] !== undefined && localStorage['products'] !== "{}") {
-  initStorage();
-}
-
-if (localStorage['dcount'] !== undefined) {
-  deleteCount += parseInt(localStorage['dcount']);
-} else {
-  localStorage.setItem('dcount', '0');
-}
-
-uniqCount += deleteCount;
 
 function initAddButton() {
   $('.prodbutton').click(function (){
@@ -88,11 +75,16 @@ function initAddButton() {
   });
 }
 
-$(document).ready(function() {
-  if ($('.fixedblocks').length !== 0) {
+  function replaceLoadmore(evnt, data, status, xhr) {
+    $(".loadmore").replaceWith(data);
     initAddButton();
+    listerLoadmore();
   }
-});
+
+  function listerLoadmore() {
+    $(".loadmore a").on('ajax:success', replaceLoadmore);
+  }
+
 
 function isNormalInteger(str) {
     return /^[1-9]\d*$/.test(str);
@@ -247,23 +239,29 @@ function initProdEvents() {
 
 $(document).ready(function() {
 
-  function replaceLoadmore(evnt, data, status, xhr) {
-    $(".loadmore").replaceWith(data);
+  // Для всех страниц
+
+  if (localStorage['products'] !== undefined && localStorage['products'] !== "{}") {
+    initStorage();
+  }
+
+  if (localStorage['dcount'] !== undefined) {
+    deleteCount += parseInt(localStorage['dcount']);
+    uniqCount += deleteCount;
+  } else {
+    localStorage.setItem('dcount', '0');
+  }
+
+  // Для главной
+
+  if ($('.fixedblocks').length !== 0) {
     initAddButton();
     listerLoadmore();
   }
 
-  function listerLoadmore() {
-    $(".loadmore a").on('ajax:success', replaceLoadmore);
-  }
+  // Для корзины
 
-  listerLoadmore();
-
-});
-
-$(document).ready(function() {
   if ($('.cartbox').length !== 0) {
-    var products = {};
     var idCount = {};
     var counter = 0;
 
@@ -292,11 +290,11 @@ $(document).ready(function() {
             }
           });
 
-          var i;
+          var i, founder;
 
           for (key in products) {
 
-            var founder = false;
+            founder = false;
 
             for (i = 0; i < fineid.length; i++) {
               if (products[key]['id'] === fineid[i]) {
@@ -313,20 +311,11 @@ $(document).ready(function() {
             }
           }
 
-          var uniqCount = 0 + parseInt(deleteCount);
-          var itemCount = 0;
-          var tprice = 0;
+          uniqCount = 0;
+          itemCount = 0;
+          tprice = 0;
 
-          products = JSON.parse(localStorage['products']);
-
-          for (key in products) {
-            uniqCount += 1;
-            itemCount += products[key]['count'];
-            tprice += products[key]['count'] * products[key]['price'];
-          }
-
-          deleteCount += parseInt(localStorage['dcount']);
-
+          initStorage();
           initProdEvents();
 
           if ($('.prodbox').data('id') === undefined) {
