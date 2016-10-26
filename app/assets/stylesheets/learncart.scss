@@ -27,6 +27,11 @@ $site-green: #34a994;
       align-items: center;
     }
 
+    .error {
+      margin: 0 auto;
+      color: red;
+    }
+
     .prodbox-func {
       display: flex;
       justify-content: space-between;

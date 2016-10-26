@@ -5,27 +5,31 @@ var uniqCount = 0 + parseInt(deleteCount);
 var itemCount = 0;
 var tprice = 0;
 
-if (localStorage['products'] !== undefined) {
-  products = JSON.parse(localStorage['products']);
+function initStorage() {
+    products = JSON.parse(localStorage['products']);
 
-  for (key in products) {
+    for (key in products) {
       uniqCount += 1;
       itemCount += products[key]['count'];
       tprice += products[key]['count'] * products[key]['price'];
-  }
+    }
 
-  // if (itemCount < 1000) {
-  //   $('.circle').html(itemCount).css('display', 'block');
-  // } else {
-  //   $('.circle').html('∞').css('display', 'block');
-  // }
+    // if (itemCount < 1000) {
+    //   $('.circle').html(itemCount).css('display', 'block');
+    // } else {
+    //   $('.circle').html('∞').css('display', 'block');
+    // }
 
-  $('.circle').html(itemCount).css('display', 'block');
-  $('.tpricespan').text("$" + tprice.toFixed(2));
+    $('.circle').html(itemCount).css('display', 'block');
+    $('.tpricespan').text("$" + tprice.toFixed(2));
+}
+
+if (localStorage['products'] !== undefined && localStorage['products'] !== "{}") {
+  initStorage();
 }
 
 if (localStorage['dcount'] !== undefined) {
-  deleteCount += localStorage['dcount'];
+  deleteCount += parseInt(localStorage['dcount']);
 } else {
   localStorage.setItem('dcount', '0');
 }
@@ -73,7 +77,11 @@ function initAddButton() {
   });
 }
 
-initAddButton();
+$(document).ready(function() {
+  if ($('.fixedblocks').length !== 0) {
+    initAddButton();
+  }
+});
 
 function isNormalInteger(str) {
     return /^[1-9]\d*$/.test(str);
@@ -223,17 +231,17 @@ $(document).ready(function() {
   if ($('.cartbox').length !== 0) {
     var products = {};
     var idCount = {};
-    var uniqCount = 0;
+    var counter = 0;
 
-    if (localStorage['products'] !== undefined) {
+    if (localStorage['products'] !== undefined && localStorage['products'] !== "{}") {
       products = JSON.parse(localStorage['products']);
 
       for (key in products) {
-          uniqCount += 1;
-          var prodName = "product" + uniqCount;
-          idCount[prodName] = {};
-          idCount[prodName]['id'] = products[key]['id'];
-          idCount[prodName]['count'] = products[key]['count'];
+        counter += 1;
+        var prodName = "product" + counter;
+        idCount[prodName] = {};
+        idCount[prodName]['id'] = products[key]['id'];
+        idCount[prodName]['count'] = products[key]['count'];
       }
 
       $.ajax({
@@ -242,7 +250,56 @@ $(document).ready(function() {
         data: { 'idCount': idCount },
         success: function(data, status, xhr){
           $(".pcontent").replaceWith(data);
+
+          var fineid = []
+          $('.prodbox').each(function(){
+            if ($(this).data('id')){
+              fineid.push($(this).data('id'));
+            }
+          });
+
+          var i;
+
+          for (key in products) {
+
+            var founder = false;
+
+            for (i = 0; i < fineid.length; i++) {
+              if (products[key]['id'] === fineid[i]) {
+                founder = true;
+                break;
+              }
+            }
+
+            if (founder === false) {
+              delete products[key];
+              deleteCount++;
+              localStorage['dcount'] = deleteCount;
+              localStorage['products'] = JSON.stringify(products);
+            }
+          }
+
+          var uniqCount = 0 + parseInt(deleteCount);
+          var itemCount = 0;
+          var tprice = 0;
+
+          products = JSON.parse(localStorage['products']);
+
+          for (key in products) {
+            uniqCount += 1;
+            itemCount += products[key]['count'];
+            tprice += products[key]['count'] * products[key]['price'];
+          }
+
+          deleteCount += parseInt(localStorage['dcount']);
+
           initProdEvents();
+
+          if ($('.prodbox').data('id') === undefined) {
+            $('.circle').css('display', 'none');
+            $('.tpricespan').text("empty");
+            localStorage.clear();
+          }
         },
         error: function(xhr, status, error){
           console.log(xhr);

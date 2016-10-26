@@ -3,8 +3,28 @@ class CartController < FrontendController
   end
 
   def cartls
+    @idsfordel = []
 
-    @cart_list =  params[:idCount].map { |key, value| Product.visibles.find_by(id: value['id']) }
+    @cart_list =  params[:idCount].map do |key, value|
+      if (Product.visibles.find_by(id: value['id'])) then
+        Product.visibles.find_by(id: value['id'])
+      else
+        @idsfordel.push(value['id'])
+        nil
+      end
+    end
+
+    # puts "Hello World!"
+
+    # @cart_list.each do |cart|
+    #   if cart
+    #     puts cart.id
+    #   end
+    # end
+
+    # @idsfordel.each do |id|
+    #   puts id
+    # end
 
     @count_list = []
 
