@@ -96,7 +96,7 @@ function isZeroOrEmpty(str) {
 }
 
 function initProdEvents() {
-  $('.prodinp').change(function (){
+  $('.prodinp').on("change", function (){
     if (isNormalInteger($(this).val()) === false) {
       $(this).val(parseInt($(this).val()));
 
@@ -151,20 +151,22 @@ function initProdEvents() {
 
     for (key in products) {
       if (productId === products[key]['id']) {
-        products[key]['count'] += 1;
-        localStorage['products'] = JSON.stringify(products);
+        if (parseInt(products[key]['count']) < 999) {
+          products[key]['count'] += 1;
+          localStorage['products'] = JSON.stringify(products);
+
+          $('.cartbox').data('totalprice', (parseFloat($('.cartbox').data('totalprice')) + price).toFixed(2));
+          $('.subtot .right').text("$" + $('.cartbox').data('totalprice'));
+          $('.tright').text("$" + $('.cartbox').data('totalprice'));
+
+          $('.circle').text(parseInt($('.circle').text()) + 1);
+          $('.tpricespan').text("$" + $('.cartbox').data('totalprice'));
+
+          $(this).parent('.countblock').find('.prodinp').val(counter);
+          $(this).parents('.prodbox-func').find('.totalprice').text("$" + (price * counter).toFixed(2));
+        }
       }
     }
-
-    $('.cartbox').data('totalprice', (parseFloat($('.cartbox').data('totalprice')) + price).toFixed(2));
-    $('.subtot .right').text("$" + $('.cartbox').data('totalprice'));
-    $('.tright').text("$" + $('.cartbox').data('totalprice'));
-
-    $('.circle').text(parseInt($('.circle').text()) + 1);
-    $('.tpricespan').text("$" + $('.cartbox').data('totalprice'));
-
-    $(this).parent('.countblock').find('.prodinp').val(counter);
-    $(this).parents('.prodbox-func').find('.totalprice').text("$" + (price * counter).toFixed(2));
   });
 
   $('.deleter').click(function (){

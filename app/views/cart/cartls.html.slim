@@ -34,7 +34,7 @@
                 .prodbox-func
                   span.oneprice = number_to_currency(cart_elem.saleprice, precision: 2, locale: :en)
                   .countblock
-                    input type="number" name="count" class="prodinp" value="#{countel}" max="999"
+                    input type="number" name="count" class="prodinp" value="#{countel}" min="1" max="999"
                     .plusblock
                   span.totalprice = number_to_currency(cart_elem.saleprice * countel.to_f, precision: 2, locale: :en)
                   span.deleter
@@ -47,7 +47,7 @@
                 .prodbox-func
                   span.oneprice = number_to_currency(cart_elem.price, precision: 2, locale: :en)
                   .countblock
-                    input type="number" name="count" class="prodinp" value="#{countel}" max="999"
+                    input type="number" name="count" class="prodinp" value="#{countel}" min="1" max="999"
                     .plusblock
                   span.totalprice = number_to_currency(cart_elem.price * countel.to_f, precision: 2, locale: :en)
                   span.deleter
