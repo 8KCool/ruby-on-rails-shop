@@ -22,7 +22,7 @@
     - if @products_list.any?
       .countprod = "we have over #{@products_list.total_count - 1} products in our shop"
       = render 'products'
-      - if @products_list.count >= 8
+      - if @products_list.total_count > 8
         .loadmore
           = link_to "+ load more products", { page: 2 }, remote: true
     - else
