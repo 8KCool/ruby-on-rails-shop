@@ -14,13 +14,14 @@ function initStorage() {
       tprice += products[key]['count'] * products[key]['price'];
     }
 
-    // if (itemCount < 1000) {
-    //   $('.circle').html(itemCount).css('display', 'block');
-    // } else {
-    //   $('.circle').html('∞').css('display', 'block');
-    // }
+    $('.circle').data('count', itemCount).css('display', 'block');
 
-    $('.circle').html(itemCount).css('display', 'block');
+    if (parseInt($('.circle').data('count')) < 1000) {
+      $('.circle').text($('.circle').data('count')).css('display', 'block');
+    } else {
+      $('.circle').text('∞').css('display', 'block');
+    }
+
     $('.tpricespan').text("$" + tprice.toFixed(2));
 }
 
@@ -46,11 +47,14 @@ function initAddButton() {
 
     for (key in products) {
       if (prodName === products[key]['name']) {
-        products[key]['count'] += 1;
-        tprice += products[key]['price'];
-        localStorage['products'] = JSON.stringify(products);
+        if (parseInt(products[key]['count']) < 999){
+          products[key]['count'] += 1;
+          tprice += products[key]['price'];
+          localStorage['products'] = JSON.stringify(products);
+          itemCount ++;
+        }
+
         finder = true;
-        itemCount ++;
       }
     }
 
@@ -72,7 +76,14 @@ function initAddButton() {
       localStorage['products'] = JSON.stringify(products);
     }
 
-    $('.circle').html(itemCount).css('display', 'block');
+    $('.circle').data('count', itemCount).css('display', 'block');
+
+    if (parseInt($('.circle').data('count')) < 1000) {
+      $('.circle').text($('.circle').data('count')).css('display', 'block');
+    } else {
+      $('.circle').text('∞').css('display', 'block');
+    }
+
     $('.tpricespan').html("$" + (tprice).toFixed(2));
   });
 }
@@ -135,7 +146,14 @@ function initProdEvents() {
     $('.subtot .right').text("$" + $('.cartbox').data('totalprice'));
     $('.tright').text("$" + $('.cartbox').data('totalprice'));
 
-    $('.circle').text(parseInt($('.circle').text()) - oldCount + newCount);
+    $('.circle').data('count', parseInt($('.circle').data('count')) - oldCount + newCount).css('display', 'block');
+
+    if (parseInt($('.circle').data('count')) < 1000) {
+      $('.circle').text($('.circle').data('count'));
+    } else {
+      $('.circle').text('∞');
+    }
+
     $('.tpricespan').text("$" + $('.cartbox').data('totalprice'));
 
     var price = parseFloat($(this).parents('.prodbox').data('price'));
@@ -159,7 +177,14 @@ function initProdEvents() {
           $('.subtot .right').text("$" + $('.cartbox').data('totalprice'));
           $('.tright').text("$" + $('.cartbox').data('totalprice'));
 
-          $('.circle').text(parseInt($('.circle').text()) + 1);
+          $('.circle').data('count', parseInt($('.circle').data('count')) + 1).css('display', 'block');
+
+          if (parseInt($('.circle').data('count')) < 1000) {
+            $('.circle').text($('.circle').data('count'));
+          } else {
+            $('.circle').text('∞');
+          }
+
           $('.tpricespan').text("$" + $('.cartbox').data('totalprice'));
 
           $(this).parent('.countblock').find('.prodinp').val(counter);
@@ -192,7 +217,14 @@ function initProdEvents() {
     $('.subtot .right').text("$" + $('.cartbox').data('totalprice'));
     $('.tright').text("$" + $('.cartbox').data('totalprice'));
 
-    $('.circle').text($('.circle').text() - productCount);
+    $('.circle').data('count', parseInt($('.circle').data('count')) - productCount).css('display', 'block');
+
+    if (parseInt($('.circle').data('count')) < 1000) {
+      $('.circle').text($('.circle').data('count'));
+    } else {
+      $('.circle').text('∞');
+    }
+
     $('.tpricespan').text("$" + $('.cartbox').data('totalprice'));
 
     if ($(".prodbox").length == 0) {
