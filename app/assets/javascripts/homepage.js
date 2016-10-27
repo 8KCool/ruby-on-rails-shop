@@ -237,6 +237,76 @@ function initProdEvents() {
   });
 }
 
+function loadCart () {
+  var idCount = {};
+  var counter = 0;
+  if (localStorage['products'] !== undefined && localStorage['products'] !== "{}") {
+    products = JSON.parse(localStorage['products']);
+
+    for (key in products) {
+      counter += 1;
+      var prodName = "product" + counter;
+      idCount[prodName] = {};
+      idCount[prodName]['id'] = products[key]['id'];
+      idCount[prodName]['count'] = products[key]['count'];
+    }
+
+    $.ajax({
+      url: '/cart',
+      type: 'post',
+      data: { 'idCount': idCount },
+      success: function(data, status, xhr){
+        $(".pcontent").replaceWith(data);
+
+        var fineid = []
+        $('.prodbox').each(function(){
+          if ($(this).data('id')){
+            fineid.push($(this).data('id'));
+          }
+        });
+
+        var i, founder;
+
+        for (key in products) {
+
+          founder = false;
+
+          for (i = 0; i < fineid.length; i++) {
+            if (products[key]['id'] === fineid[i]) {
+              founder = true;
+              break;
+            }
+          }
+
+          if (founder === false) {
+            delete products[key];
+            deleteCount++;
+            localStorage['dcount'] = deleteCount;
+            localStorage['products'] = JSON.stringify(products);
+          }
+        }
+
+        uniqCount = 0;
+        itemCount = 0;
+        tprice = 0;
+
+        initStorage();
+        initProdEvents();
+
+        if ($('.prodbox').data('id') === undefined) {
+          $('.circle').css('display', 'none');
+          $('.tpricespan').text("empty");
+          localStorage.clear();
+        }
+      },
+      error: function(xhr, status, error){
+        console.log(xhr);
+        alert(error);
+      }
+    });
+  }
+}
+
 $(document).ready(function() {
 
   // Для всех страниц
@@ -262,73 +332,6 @@ $(document).ready(function() {
   // Для корзины
 
   if ($('.cartbox').length !== 0) {
-    var idCount = {};
-    var counter = 0;
-
-    if (localStorage['products'] !== undefined && localStorage['products'] !== "{}") {
-      products = JSON.parse(localStorage['products']);
-
-      for (key in products) {
-        counter += 1;
-        var prodName = "product" + counter;
-        idCount[prodName] = {};
-        idCount[prodName]['id'] = products[key]['id'];
-        idCount[prodName]['count'] = products[key]['count'];
-      }
-
-      $.ajax({
-        url: '/cart',
-        type: 'post',
-        data: { 'idCount': idCount },
-        success: function(data, status, xhr){
-          $(".pcontent").replaceWith(data);
-
-          var fineid = []
-          $('.prodbox').each(function(){
-            if ($(this).data('id')){
-              fineid.push($(this).data('id'));
-            }
-          });
-
-          var i, founder;
-
-          for (key in products) {
-
-            founder = false;
-
-            for (i = 0; i < fineid.length; i++) {
-              if (products[key]['id'] === fineid[i]) {
-                founder = true;
-                break;
-              }
-            }
-
-            if (founder === false) {
-              delete products[key];
-              deleteCount++;
-              localStorage['dcount'] = deleteCount;
-              localStorage['products'] = JSON.stringify(products);
-            }
-          }
-
-          uniqCount = 0;
-          itemCount = 0;
-          tprice = 0;
-
-          initStorage();
-          initProdEvents();
-
-          if ($('.prodbox').data('id') === undefined) {
-            $('.circle').css('display', 'none');
-            $('.tpricespan').text("empty");
-            localStorage.clear();
-          }
-        },
-        error: function(xhr, status, error){
-          console.log(xhr);
-          alert(error);
-        }
-      });
-    }
+    loadCart();
   }
 });
