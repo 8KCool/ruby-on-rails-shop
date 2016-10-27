@@ -117,10 +117,11 @@ ru:
         updated_at: "Обновлен"
         category: "Категория"
       order:
-        total:     "Стоимость заказа"
-        status:   "Статус заказа"
-        created_at:  "Создан"
-        updated_at:  "Обновлён"
+        id:         "Номер заказа"
+        total:      "Стоимость заказа"
+        status:     "Статус заказа"
+        created_at: "Создан"
+        updated_at: "Обновлён"
       order_item:
         product: "Продукт"
         count: "Количество продуктов"

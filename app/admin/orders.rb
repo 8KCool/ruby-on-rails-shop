@@ -1,5 +1,5 @@
 ActiveAdmin.register Order do
-  permit_params :total, :status, order_items_attributes: [:product_id, :count, :price, :_destroy]
+  permit_params :total, :status, order_items_attributes: [:id, :product_id, :count, :price, :_destroy]
   ### Disable some actions
   actions :all
 
@@ -12,14 +12,23 @@ ActiveAdmin.register Order do
   ### Index as table
   index download_links: false do
     selectable_column
-    # column "slug", :slug, sortable: :slug do |post|
-    #   link_to post.slug, post_path(post.slug), target: '_blank'
-    # end
-    # column "slug", :slug, sortable: :slug do |post|
-    #   link_to post.slug, post_path(post.slug), target: '_blank'
-    # end
-    column :total
-    column :status
+    column :id
+    column (:total) { |order| "$" + order.total.to_s }
+    column ("Список продуктов") { |order| order.products.map { |prod| link_to(prod.name, admin_product_path(prod)) }.join(',<br/>').html_safe  }
+    column ("Заказано продуктов") { |order| order.order_items.map { |item| item.count }.join(', <br/>').html_safe }
+    column ("Продуктов на складе"){ |order| order.products.map { |prod| prod.count }.join(', <br/>').html_safe }
+    column ("Цена товара на момент заказа") { |order| ("$" + order.order_items.map { |item| item.price }.join(',<br/>$')).html_safe}
+    column :status, sortable: :status do |order|
+      if order.status == 0
+        "Ожидание"
+      elsif order.status == 1
+        "Подтверждён"
+      elsif order.status == 2
+        "Отменён"
+      elsif order.status == 3
+        "Отгружен"
+      end
+    end
     column :created_at
     column :updated_at
     actions
@@ -52,7 +61,7 @@ ActiveAdmin.register Order do
 
   batch_action :shipped, confirm: "Уверены?" do |ids|
     Order.find(ids).each do |order|
-      order.update status: 4
+      order.update status: 3
     end
     redirect_to collection_path, alert: "Изменен статус заказа на: Отгружен."
   end
@@ -62,11 +71,27 @@ ActiveAdmin.register Order do
   show do
 
     attributes_table do
+      row :id
       row (:total) {"$" + order.total.to_s }
-      row ("Список продуктов") { order.products.map { |prod| link_to(prod.name, admin_product_path(prod)) }.join(', ').html_safe  }
-      row ("Количество продуктов") { "Заказано: " + order.order_items.pluck(:count).join(', ') + " На складе: " + order.products.pluck(:count).join(', ') }
-      row ("Цена товара на момент заказа") { "$" + order.order_items.pluck(:price).join(', $') }
-      row :status
+      row (:status) {
+        if order.status == 0
+          "Ожидание"
+        elsif order.status == 1
+          "Подтверждён"
+        elsif order.status == 2
+          "Отменён"
+        elsif order.status == 3
+          "Отгружен"
+        end }
+    end
+
+    panel "Продукты" do
+      table_for order.order_items do
+        column :product
+        column :count
+        column ("Количество на складе") { |order_item| order_item.product.count }
+        column (:price) { |order_item| "$" + order_item.price.to_s }
+      end
     end
 
   end
@@ -77,6 +102,8 @@ ActiveAdmin.register Order do
       row :updated_at
     end
   end
+
+
 
   form html: { multipart: true } do |f|
       f.inputs "" do
