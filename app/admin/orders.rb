@@ -3,6 +3,12 @@ ActiveAdmin.register Order do
   ### Disable some actions
   actions :all
 
+  scope "Все", :all
+  scope "Ожидание", :waiting, default: true
+  scope "Подтвержден", :confirmed
+  scope "Отменён", :rejected
+  scope "Отгружен", :shipped
+
   ### Index as table
   index download_links: false do
     selectable_column
@@ -57,15 +63,12 @@ ActiveAdmin.register Order do
 
     attributes_table do
       row (:total) {"$" + order.total.to_s }
-      row ("Список продуктов") { order.order_items.product }
-      row ("Количество продуктов") { "Заказано: " + order.order_items.pluck(:count).join(', ') + " На складе: " + order.products.pluck(:count).join(', ')}
+      row ("Список продуктов") { order.products.map { |prod| link_to(prod.name, admin_product_path(prod)) }.join(', ').html_safe  }
+      row ("Количество продуктов") { "Заказано: " + order.order_items.pluck(:count).join(', ') + " На складе: " + order.products.pluck(:count).join(', ') }
       row ("Цена товара на момент заказа") { "$" + order.order_items.pluck(:price).join(', $') }
       row :status
     end
 
-    #seo_panel_for news
-
-    #static_files_for news
   end
 
   sidebar 'Дополнительные данные', only: :show do
@@ -75,15 +78,12 @@ ActiveAdmin.register Order do
     end
   end
 
-
   form html: { multipart: true } do |f|
       f.inputs "" do
 
         f.input :total
         f.input :status
       end
-
-      #Seo::FormtasticSeoFieldset::build f
 
       f.inputs do
         f.has_many :order_items, { heading: 'Заказанные товары',
