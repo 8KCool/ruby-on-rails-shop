@@ -8,9 +8,9 @@
       span.name = product.name
       span.sumprice
         - if have_saleprice
-          span.saleprice = number_to_currency(product.price, precision: 2, locale: :en)
-          span.price = number_to_currency(product.saleprice, precision: 2, locale: :en)
+          span.saleprice = number_to_currency(product.price, precision: 2, locale: :en, separator: ",", delimiter: "")
+          span.price = number_to_currency(product.saleprice, precision: 2, locale: :en, separator: ",", delimiter: "")
         - else
-          span.price = number_to_currency(product.price, precision: 2, locale: :en)
+          span.price = number_to_currency(product.price, precision: 2, locale: :en, separator: ",", delimiter: "")
     .ninjablock
       .prodbutton add to cart

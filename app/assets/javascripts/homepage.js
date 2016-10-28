@@ -149,7 +149,7 @@ function initProdEvents() {
     $('.tpricespan').text("$" + $('.cartbox').data('totalprice'));
 
     var price = parseFloat($(this).parents('.prodbox').data('price'));
-    $(this).parents('.prodbox-func').find('.totalprice').text("$" + (price * $(this).val()).toFixed(2));
+    $(this).parents('.prodbox-func').find('.totalprice').text("$" + (price * $(this).val()).toFixed(2).replace('.', ','));
   });
 
   $('.plusblock').click(function (){
@@ -180,7 +180,7 @@ function initProdEvents() {
           $('.tpricespan').text("$" + $('.cartbox').data('totalprice'));
 
           $(this).parent('.countblock').find('.prodinp').val(counter);
-          $(this).parents('.prodbox-func').find('.totalprice').text("$" + (price * counter).toFixed(2));
+          $(this).parents('.prodbox-func').find('.totalprice').text("$" + (price * counter).toFixed(2).replace('.', ','));
         }
       }
     }
