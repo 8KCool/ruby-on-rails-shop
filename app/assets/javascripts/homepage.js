@@ -245,11 +245,10 @@ function initProdEvents() {
         type: 'post',
         data: { 'idCount': idCount },
         success: function(data, status, xhr){
-          alert("Заказ принят!");
           localStorage.clear();
           $(".pcontent").replaceWith('<div class="pcontent holder clearfix"><div class="cartbox">' +
           '</div><div class="allprods"><div class="prodbox"><div class="prodbox-desc">' +
-          'your cart is empty</div></div></div></div>');
+          'your order is accepted, thank you</div></div></div></div>');
           $('.circle').css('display', 'none');
           $('.tpricespan').text("empty");
         },
