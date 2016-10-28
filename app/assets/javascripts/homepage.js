@@ -24,6 +24,14 @@ function initStorage() {
   $('.tpricespan').text("$" + tprice.toFixed(2));
 }
 
+function PopUpShow() {
+  $('.popup').css('display','inline-block');
+}
+
+function PopUpHide() {
+  $('.popup').css('display','none');
+}
+
 function initAddButton() {
   $('.prodbutton').click(function (){
     var $this = $(this);
@@ -72,6 +80,9 @@ function initAddButton() {
     }
 
     $('.tpricespan').html("$" + (tprice).toFixed(2));
+
+    PopUpShow();
+    setTimeout(PopUpHide, 2000);
   });
 }
 

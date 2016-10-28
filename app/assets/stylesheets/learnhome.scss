@@ -150,6 +150,33 @@ $site-green: #34a994;
   }
 }
 
+.popup {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  display: none;
+  height: 220px;
+  line-height: 220px;
+  z-index: 5;
+  padding: 0 20px;
+  //transition: opacity 1s;
+  background-color: #fff;
+  border: 2px solid $site-green;
+  border-radius: 5px;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #444;
+}
+
+.hidden {
+  display: none;
+}
+
+.vishidden {
+  opacity: 0;
+}
+
 /* CONTENT fixedblocks*/
 
 .fixedblocks {
