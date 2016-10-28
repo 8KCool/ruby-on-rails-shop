@@ -6,20 +6,20 @@ ActiveAdmin.register_page "Dashboard" do
 
     columns do
       column do
-        panel "Последние добавленные Новости" do
-          if News.any?
-            table_for News.order(created_at: :desc).limit(10) do
-              column :title do |news|
-                link_to news.title, admin_news_path(news)
+        panel "Последние добавленные Товары" do
+          if Product.any?
+            table_for Product.order(created_at: :desc).limit(10) do
+              column :title do |product|
+                link_to product.name, admin_product_path(product)
               end
-              column :published_at do |news|
-                I18n.l news.published_at, format: '%d %b %Y %H:%M'
+              column :created_at do |product|
+                I18n.l product.created_at, format: '%d %b %Y %H:%M'
               end
               column :hided
             end
           else
             para style: "margin-top:1.5em;text-align:center;font-weight:bold" do
-              "На данный момент не добавлено ни одной новости."
+              "На данный момент не добавлено ни одного товара."
             end
           end
         end

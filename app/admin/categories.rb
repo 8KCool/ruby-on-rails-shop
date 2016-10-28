@@ -14,4 +14,24 @@ ActiveAdmin.register Category do
     actions
   end
 
+  batch_action :show, confirm: "Уверены?" do |ids|
+    Category.find(ids).each do |category|
+      category.update hided: false
+      Product.where(category_id: ids).each do |product|
+        product.update hided: false
+      end
+    end
+    redirect_to collection_path, alert: "У указанной категории товаров убран флаг скрытия."
+  end
+
+  batch_action :hide, confirm: "Уверены?" do |ids|
+    Category.find(ids).each do |category|
+      category.update hided: true
+      Product.where(category_id: ids).each do |product|
+        product.update hided: true
+      end
+    end
+    redirect_to collection_path, alert: "Указанная категория товаров была скрыта."
+  end
+
 end
