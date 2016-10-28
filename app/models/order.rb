@@ -10,4 +10,10 @@ class Order < ActiveRecord::Base
   scope :confirmed, -> { where(status: 1) }
   scope :rejected, -> { where(status: 2) }
   scope :shipped, -> { where(status: 3) }
+
+  after_create :send_email
+
+  def send_email
+    OrderMailer.order_message(self).deliver_now
+  end
 end
