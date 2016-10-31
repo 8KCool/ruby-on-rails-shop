@@ -13,4 +13,13 @@ class Product < ActiveRecord::Base
 
   scope :visibles, -> { where(hided: false) }
   scope :ordered, -> { order(prior: :asc, id: :desc) }
+
+  def curprice
+    if self.saleprice > 0 && self.saletime > DateTime.now
+      self.saleprice
+    else
+      self.price
+    end
+  end
+
 end

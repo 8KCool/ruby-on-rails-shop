@@ -5,21 +5,12 @@ class OrderController < FrontendController
 
     @cart_list =  params[:idCount].map do |key, value|
       product = Product.visibles.find_by(id: value['id'])
-      if (product.saleprice > 0 && product.saletime > DateTime.now)
-        @total_price += product.saleprice * value['count'].to_i
+        @total_price += product.curprice * value['count'].to_i
         {
           product_id: product.id,
           count: value['count'].to_i,
-          price: product.saleprice
+          price: product.curprice
         }
-      else
-        @total_price += product.price * value['count'].to_i
-        {
-          product_id: product.id,
-          count: value['count'].to_i,
-          price: product.price
-        }
-      end
     end
 
     Order.create!({ total: @total_price.round(2), order_items_attributes: @cart_list });
