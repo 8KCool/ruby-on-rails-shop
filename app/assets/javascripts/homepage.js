@@ -240,7 +240,7 @@ function initProdEvents() {
     }
   });
 
-  $('.cartbutton').click(function (){
+  $('.cartbutton').click(function () {
     var idCount = {};
     var uniqCount = 0;
 
@@ -256,7 +256,7 @@ function initProdEvents() {
         url: '/makeorder',
         type: 'post',
         data: { 'idCount': idCount },
-        success: function(data, status, xhr){
+        success: function(data, status, xhr) {
           localStorage.clear();
           $(".pcontent").replaceWith('<div class="pcontent holder clearfix"><div class="cartbox">' +
           '</div><div class="allprods"><div class="prodbox"><div class="prodbox-desc">' +
@@ -264,8 +264,7 @@ function initProdEvents() {
           $('.circle').css('display', 'none');
           $('.tpricespan').text("empty");
         },
-        error: function(xhr, status, error){
-          console.log(xhr);
+        error: function(xhr, status, error) {
           alert(error);
         }
       });
