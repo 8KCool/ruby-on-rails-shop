@@ -39,7 +39,7 @@ $site-green: #34a994;
     height: 18px;
     width: 17px;
     content: '';
-    background: image-url("icons-sprite.png") no-repeat -154px -2px;
+    background: image-url("icons_sprite.png") no-repeat -154px -2px;
   }
 
     a {
@@ -88,7 +88,7 @@ $site-green: #34a994;
       height: 21px;
       width: 16px;
       content: '';
-      background: image-url("icons-sprite.png") no-repeat -2px -2px;
+      background: image-url("icons_sprite.png") no-repeat -2px -2px;
     }
 
   }
@@ -115,7 +115,7 @@ $site-green: #34a994;
     height: 21px;
     width: 21px;
     content: '';
-    background: image-url("icons-sprite.png") no-repeat -91px -2px;
+    background: image-url("icons_sprite.png") no-repeat -91px -2px;
   }
 
   span {
@@ -463,25 +463,25 @@ $site-green: #34a994;
     &.facebook {
         height: 16px;
         width: 8px;
-        background: image-url("icons-sprite.png") no-repeat -59px -2px;
+        background: image-url("icons_sprite.png") no-repeat -59px -2px;
     }
 
     &.twitter {
         height: 13px;
         width: 17px;
-        background: image-url("icons-sprite.png") no-repeat -133px -2px;
+        background: image-url("icons_sprite.png") no-repeat -133px -2px;
     }
 
     &.dribbble {
         height: 16px;
         width: 17px;
-        background: image-url("icons-sprite.png") no-repeat -38px -2px;
+        background: image-url("icons_sprite.png") no-repeat -38px -2px;
     }
 
     &.googleplus {
         height: 17px;
         width: 16px;
-        background: image-url("icons-sprite.png") no-repeat -71px -2px;
+        background: image-url("icons_sprite.png") no-repeat -71px -2px;
     }
   }
 }
@@ -531,31 +531,31 @@ $site-green: #34a994;
       &.paypal {
         height: 15px;
         width: 52px;
-        background: image-url("payments-sprite.png") no-repeat -106px -2px;
+        background: image-url("payments_sprite.png") no-repeat -106px -2px;
       }
 
       &.visa {
         height: 14px;
         width: 42px;
-        background: image-url("payments-sprite.png") no-repeat -209px -2px;
+        background: image-url("payments_sprite.png") no-repeat -209px -2px;
       }
 
       &.mastercard {
         height: 23px;
         width: 38px;
-        background: image-url("payments-sprite.png") no-repeat -64px -2px;
+        background: image-url("payments_sprite.png") no-repeat -64px -2px;
       }
 
       &.discover {
         height: 10px;
         width: 58px;
-        background: image-url("payments-sprite.png") no-repeat -2px -2px;
+        background: image-url("payments_sprite.png") no-repeat -2px -2px;
       }
 
       &.skrill {
         height: 14px;
         width: 43px;
-        background: image-url("payments-sprite.png") no-repeat -162px -2px;
+        background: image-url("payments_sprite.png") no-repeat -162px -2px;
       }
     }
 }
