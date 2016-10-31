@@ -47,6 +47,8 @@ function initAddButton() {
           tprice += products[key]['price'];
           localStorage['products'] = JSON.stringify(products);
           itemCount ++;
+          PopUpShow();
+          setTimeout(PopUpHide, 2000);
         }
 
         finder = true;
@@ -69,6 +71,8 @@ function initAddButton() {
 
       tprice += prodPrice;
       localStorage['products'] = JSON.stringify(products);
+      PopUpShow();
+      setTimeout(PopUpHide, 2000);
     }
 
     $('.circle').data('count', itemCount).css('display', 'block');
@@ -81,21 +85,18 @@ function initAddButton() {
 
     $('.tpricespan').html("$" + (tprice).toFixed(2));
 
-    PopUpShow();
-    setTimeout(PopUpHide, 2000);
   });
 }
 
-  function replaceLoadmore(evnt, data, status, xhr) {
-    $(".loadmore").replaceWith(data);
-    initAddButton();
-    listerLoadmore();
-  }
+function replaceLoadmore(evnt, data, status, xhr) {
+  $(".loadmore").replaceWith(data);
+  initAddButton();
+  listerLoadmore();
+}
 
-  function listerLoadmore() {
-    $(".loadmore a").on('ajax:success', replaceLoadmore);
-  }
-
+function listerLoadmore() {
+  $(".loadmore a").on('ajax:success', replaceLoadmore);
+}
 
 function isNormalInteger(str) {
     return /^[1-9]\d*$/.test(str);
