@@ -75,16 +75,15 @@ function initAddButton() {
   });
 }
 
-  function replaceLoadmore(evnt, data, status, xhr) {
-    $(".loadmore").replaceWith(data);
-    initAddButton();
-    listerLoadmore();
-  }
+function replaceLoadmore(evnt, data, status, xhr) {
+  $(".loadmore").replaceWith(data);
+  initAddButton();
+  listerLoadmore();
+}
 
-  function listerLoadmore() {
-    $(".loadmore a").on('ajax:success', replaceLoadmore);
-  }
-
+function listerLoadmore() {
+  $(".loadmore a").on('ajax:success', replaceLoadmore);
+}
 
 function isNormalInteger(str) {
     return /^[1-9]\d*$/.test(str);
@@ -300,7 +299,6 @@ function loadCart () {
         }
       },
       error: function(xhr, status, error){
-        console.log(xhr);
         alert(error);
       }
     });
