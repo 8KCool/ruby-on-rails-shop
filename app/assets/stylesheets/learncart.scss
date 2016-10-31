@@ -27,7 +27,7 @@ $site-green: #34a994;
       align-items: center;
     }
 
-    .error {
+    .prodbox-error {
       margin: 0 auto;
       color: red;
     }
@@ -202,7 +202,6 @@ input[type=number]::-webkit-outer-spin-button {
     }
   }
 
-
   .cartbutton {
     cursor: pointer;
     height: 54px;
@@ -215,6 +214,7 @@ input[type=number]::-webkit-outer-spin-button {
     text-align: center;
     text-transform: uppercase;
   }
+
   .contin {
     height: 50px;
     font-size: 13px;
@@ -223,6 +223,7 @@ input[type=number]::-webkit-outer-spin-button {
     line-height: 50px;
     text-align: center;
     text-transform: uppercase;
+
     a {
       color: #676666;
       display: block;
