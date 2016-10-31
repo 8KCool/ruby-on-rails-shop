@@ -336,7 +336,6 @@ function loadCart () {
         }
       },
       error: function(xhr, status, error){
-        console.log(xhr);
         alert(error);
       }
     });

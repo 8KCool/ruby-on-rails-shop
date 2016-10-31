@@ -3,7 +3,7 @@
     .cartbox
     .allprods
       .prodbox
-        .prodbox-desc.error = "portion of your items has been removed or hidden by administrator, sorry"
+        .prodbox-desc.prodbox-error = "portion of your items has been removed or hidden by administrator, sorry"
 - else
   .pcontent.holder.clearfix
     .cartbox  data-totalprice="#{@total_price}"
@@ -53,4 +53,4 @@
                   span.deleter
       - if (@idsfordel.length != 0)
         .prodbox
-          .prodbox-desc.error = "portion of your items has been removed or hidden by administrator, sorry"
+          .prodbox-desc.prodbox-error = "portion of your items has been removed or hidden by administrator, sorry"
