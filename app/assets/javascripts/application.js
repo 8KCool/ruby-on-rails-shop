@@ -14,6 +14,5 @@
 //= require jquery_ujs
 //= require main
 //= require homepage
-//= require cartpage
 //= require turbolinks
 // do not require_tree .
