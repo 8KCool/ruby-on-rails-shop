@@ -14,9 +14,9 @@ ActiveAdmin.register Order do
     selectable_column
     column :id
     column (:total) { |order| "$" + order.total.to_s }
-    column ("Список продуктов") { |order| order.products.map { |prod| link_to(prod.name, admin_product_path(prod)) }.join(',<br/>').html_safe  }
+    column ("Список продуктов") { |order| order.order_items.map { |prod| link_to(prod.product.name, admin_product_path(prod.product)) }.join(',<br/>').html_safe  }
     column ("Заказано продуктов") { |order| order.order_items.map { |item| item.count }.join(', <br/>').html_safe }
-    column ("Продуктов на складе"){ |order| order.products.map { |prod| prod.count }.join(', <br/>').html_safe }
+    column ("Продуктов на складе"){ |order| order.order_items.map { |prod| prod.product.count }.join(', <br/>').html_safe }
     column ("Цена товара на момент заказа") { |order| ("$" + order.order_items.map { |item| item.price }.join(',<br/>$')).html_safe}
     column :status, sortable: :status do |order|
       if order.status == 0
