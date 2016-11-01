@@ -59,6 +59,7 @@ function initAddButton() {
           tprice += products[key]['price'];
           localStorage['products'] = JSON.stringify(products);
           itemCount ++;
+
           var $popup = PopUpShow();
           setTimeout(function(){ PopUpHide($popup); }, 2000);
         }
@@ -102,6 +103,7 @@ function initAddButton() {
 
 function replaceLoadmore(evnt, data, status, xhr) {
   $(".loadmore").replaceWith(data);
+  $('.prodbutton').unbind('click');
   initAddButton();
   listerLoadmore();
 }
