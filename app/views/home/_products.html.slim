@@ -1,5 +1,8 @@
 - @products_list.each do |product|
-  - have_saleprice = product.saleprice > 0 && product.saletime > DateTime.now
+  - if product.saletime
+    - have_saleprice = product.saleprice > 0 && product.saletime > DateTime.now
+  - else
+    - have_saleprice = false
   .productcard data-id="#{product.id}" data-name="#{product.name}" data-price="#{have_saleprice ? product.saleprice : product.price}"
     .prodfoto
       = image_tag(product.image.standard.url, alt: "Фотография товара #{product.name}")
