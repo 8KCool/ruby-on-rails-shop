@@ -25,7 +25,11 @@
     .allprods
       - @cart_list.zip(@count_list).each do |cart_elem, countel|
         - if cart_elem ## elem  != nil
-            - if (cart_elem.saleprice > 0 && cart_elem.saletime > DateTime.now)
+            - if cart_elem.saletime
+              - have_saleprice = cart_elem.saleprice > 0 && cart_elem.saletime > DateTime.now
+            - else
+              - have_saleprice = false
+            - if have_saleprice
               .prodbox data-id="#{cart_elem.id}" data-name="#{cart_elem.name}" data-price="#{cart_elem.saleprice}"
                 .prodbox-desc
                   .prodboxphoto
