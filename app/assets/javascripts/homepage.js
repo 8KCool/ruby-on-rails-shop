@@ -77,6 +77,7 @@ function initAddButton() {
 
 function replaceLoadmore(evnt, data, status, xhr) {
   $(".loadmore").replaceWith(data);
+  $('.prodbutton').unbind('click');
   initAddButton();
   listerLoadmore();
 }
