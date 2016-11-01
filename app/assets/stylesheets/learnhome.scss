@@ -155,11 +155,13 @@ $site-green: #34a994;
   bottom: 15px;
   left: 15px;
   display: none;
+  opacity: 0;
+  transform: translate(-720px, 0);
   height: 220px;
   line-height: 220px;
   z-index: 5;
   padding: 0 20px;
-  //transition: opacity 1s;
+  transition: all 400ms;
   background-color: #fff;
   border: 2px solid $site-green;
   border-radius: 5px;
@@ -169,12 +171,13 @@ $site-green: #34a994;
   color: #444;
 }
 
-.hidden {
-  display: none;
+.appear {
+  display: inline-block;
 }
 
-.vishidden {
-  opacity: 0;
+.visappear {
+  opacity: 1;
+  transform: translate(0, 0);
 }
 
 /* CONTENT fixedblocks*/

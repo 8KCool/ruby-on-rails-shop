@@ -25,11 +25,23 @@ function initStorage() {
 }
 
 function PopUpShow() {
-  $('.popup').css('display','inline-block');
+  $('.popup').each(function(){
+    $(this).data('count', parseInt($(this).data('count')) + 1);
+    var count = parseInt($(this).data('count'));
+    $(this).css('transform','translate(0,' + (-240*count) + 'px)');
+   });
+  $('.pcontent').append('<div class="popup" data-count="0">Product successfully added in cart!</div>');
+  $('.popup').last().addClass('appear');
+  setTimeout(function(){ $('.popup').last().addClass('visappear'); }, 20);
+  return $('.popup').last();
 }
 
-function PopUpHide() {
-  $('.popup').css('display','none');
+function PopUpHide($popup) {
+  $popup.css('transform','translate(-720px,' + (-240*parseInt($popup.data('count'))) + 'px)');
+  $popup.removeClass('visappear');
+  setTimeout(function(){
+    $popup.removeClass('appear');
+    $popup.remove(); }, 400);
 }
 
 function initAddButton() {
@@ -47,8 +59,8 @@ function initAddButton() {
           tprice += products[key]['price'];
           localStorage['products'] = JSON.stringify(products);
           itemCount ++;
-          PopUpShow();
-          setTimeout(PopUpHide, 2000);
+          var $popup = PopUpShow();
+          setTimeout(function(){ PopUpHide($popup); }, 2000);
         }
 
         finder = true;
@@ -71,8 +83,8 @@ function initAddButton() {
 
       tprice += prodPrice;
       localStorage['products'] = JSON.stringify(products);
-      PopUpShow();
-      setTimeout(PopUpHide, 2000);
+      var $popup = PopUpShow();
+      setTimeout(function(){ PopUpHide($popup); }, 2000);
     }
 
     $('.circle').data('count', itemCount).css('display', 'block');
