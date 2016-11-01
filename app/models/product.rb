@@ -15,11 +15,16 @@ class Product < ActiveRecord::Base
   scope :ordered, -> { order(prior: :asc, id: :desc) }
 
   def curprice
-    if self.saleprice > 0 && self.saletime > DateTime.now
+    if self.saletime
+      have_saleprice = self.saleprice > 0 && self.saletime > DateTime.now
+    else
+      have_saleprice = false
+    end
+
+    if have_saleprice
       self.saleprice
     else
       self.price
     end
   end
-
 end
