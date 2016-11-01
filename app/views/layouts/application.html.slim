@@ -138,7 +138,7 @@ html lang=I18n.locale
           span +88 987 654 321
 
 
-        nav.main-nav
+        nav.main-nav.clearfix
           ul
             - @nav_items.each do |ni|
               li class=class_string(active: (ni == @active_nav_item)) = link_to ni.title, ni.url

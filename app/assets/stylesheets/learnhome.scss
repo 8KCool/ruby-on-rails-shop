@@ -126,22 +126,22 @@ $site-green: #34a994;
 
 /* navigation */
 .main-nav ul {
+  width: 980px;
+  height: 16px;
   margin-bottom: 20px;
   border-bottom: 5px solid $site-green;
-  padding: 0 128px 15px;
+  padding: 0 100px 15px;
   text-decoration: none;
   text-align: center;
-  overflow: hidden;
   li {
     display: inline;
     margin-right: 58px;
-
+    line-height: 16px;
     &:last-child {
       margin-right: 0;
     }
 
     a {
-      display: inline-block;
       text-decoration: none;
       font-size: 15px;
       font-weight: 600;
