@@ -36,7 +36,7 @@ class CartController < FrontendController
 
     @cart_list.zip(@count_list).each do |cart, count|
       if cart
-        if cart.saletime
+        if cart.saletime && cart.saleprice
           have_saleprice = cart.saleprice > 0 && cart.saletime > DateTime.now
         else
           have_saleprice = false
