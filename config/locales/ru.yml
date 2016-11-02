@@ -76,6 +76,14 @@ ru:
         few:    "Новости"
         many:   "Новостей"
         other:  "Новости"
+    errors:
+      models:
+        product:
+          attributes:
+            price:
+              invalid: "Нельзя ввести больше двух знаков после запятой"
+            saleprice:
+              invalid: "Нельзя ввести больше двух знаков после запятой"
     attributes:
       admin_user:
         email:                  "Электронная почта"
