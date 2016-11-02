@@ -15,7 +15,7 @@ class Product < ActiveRecord::Base
   scope :ordered, -> { order(prior: :asc, id: :desc) }
 
   def curprice
-    if self.saletime
+    if self.saletime && self.saleprice
       have_saleprice = self.saleprice > 0 && self.saletime > DateTime.now
     else
       have_saleprice = false
