@@ -1,5 +1,5 @@
 - @products_list.each do |product|
-  - if product.saletime
+  - if product.saletime && product.saleprice
     - have_saleprice = product.saleprice > 0 && product.saletime > DateTime.now
   - else
     - have_saleprice = false

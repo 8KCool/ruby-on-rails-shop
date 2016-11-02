@@ -25,7 +25,7 @@
     .allprods
       - @cart_list.zip(@count_list).each do |cart_elem, countel|
         - if cart_elem ## elem  != nil
-            - if cart_elem.saletime
+            - if cart_elem.saletime && cart_elem.saleprice
               - have_saleprice = cart_elem.saleprice > 0 && cart_elem.saletime > DateTime.now
             - else
               - have_saleprice = false
