@@ -1,0 +1,60 @@
+- if (@idsfordel.length != 0 && @total_price == 0)
+  .pcontent.holder.clearfix
+    .cartbox
+    .allprods
+      .prodbox
+        .prodbox-desc.prodbox-error = "portion of your items has been removed or hidden by administrator, sorry"
+- else
+  .pcontent.holder.clearfix
+    .cartbox  data-totalprice="#{@total_price}"
+      .cbtitle shopping cart summary
+      .subship
+        .subtot
+          span.left cart subtotal
+          span.right = "$#{@total_price.round(2)}"
+        .ship
+          span.left shipping
+          span.right Free shipping
+      .ordertotal
+        span.tleft
+          span.magicblock order total
+        span.tright = "$#{@total_price.round(2)}"
+      .cartbutton checkout
+      .contin
+        a href="/" continue shopping
+    .allprods
+      - @cart_list.zip(@count_list).each do |cart_elem, countel|
+        - if cart_elem ## elem  != nil
+            - if cart_elem.saletime && cart_elem.saleprice
+              - have_saleprice = cart_elem.saleprice > 0 && cart_elem.saletime > DateTime.now
+            - else
+              - have_saleprice = false
+            - if have_saleprice
+              .prodbox data-id="#{cart_elem.id}" data-name="#{cart_elem.name}" data-price="#{cart_elem.saleprice}"
+                .prodbox-desc
+                  .prodboxphoto
+                    = image_tag(cart_elem.image.cartversion.url, alt: "Фотография товара #{cart_elem.name}")
+                  = cart_elem.name
+                .prodbox-func
+                  span.oneprice = number_to_currency(cart_elem.saleprice, precision: 2, locale: :en, separator: ",", delimiter: "")
+                  .countblock
+                    input type="number" name="count" class="prodinp" value="#{countel}" min="1" max="999"
+                    .plusblock
+                  span.totalprice = number_to_currency(cart_elem.saleprice * countel.to_f, precision: 2, locale: :en, separator: ",", delimiter: "")
+                  span.deleter
+            - else
+              .prodbox data-id="#{cart_elem.id}" data-name="#{cart_elem.name}" data-price="#{cart_elem.price}"
+                .prodbox-desc
+                  .prodboxphoto
+                    = image_tag(cart_elem.image.cartversion.url, alt: "Фотография товара #{cart_elem.name}")
+                  = cart_elem.name
+                .prodbox-func
+                  span.oneprice = number_to_currency(cart_elem.price, precision: 2, locale: :en, separator: ",", delimiter: "")
+                  .countblock
+                    input type="number" name="count" class="prodinp" value="#{countel}" min="1" max="999"
+                    .plusblock
+                  span.totalprice = number_to_currency(cart_elem.price * countel.to_f, precision: 2, locale: :en, separator: ",", delimiter: "")
+                  span.deleter
+      - if (@idsfordel.length != 0)
+        .prodbox
+          .prodbox-desc.prodbox-error = "portion of your items has been removed or hidden by administrator, sorry"

@@ -1,0 +1,4 @@
+= render 'products'
+- if ((((@products_list.total_count / 8.to_f)).ceil) > params[:page].to_i)
+  .loadmore
+    = link_to "+ load more products", { page: (params[:page] ? params[:page].to_i + 1 : 2) }, remote: true

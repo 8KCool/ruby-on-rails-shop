@@ -1,0 +1,19 @@
+- @products_list.each do |product|
+  - if product.saletime && product.saleprice
+    - have_saleprice = product.saleprice > 0 && product.saletime > DateTime.now
+  - else
+    - have_saleprice = false
+  .productcard data-id="#{product.id}" data-name="#{product.name}" data-price="#{have_saleprice ? product.saleprice : product.price}"
+    .prodfoto
+      = image_tag(product.image.standard.url, alt: "Фотография товара #{product.name}")
+    hr /
+    .prodinfo
+      span.name = product.name
+      span.sumprice
+        - if have_saleprice
+          span.saleprice = number_to_currency(product.price, precision: 2, locale: :en)
+          span.price = number_to_currency(product.saleprice, precision: 2, locale: :en)
+        - else
+          span.price = number_to_currency(product.price, precision: 2, locale: :en)
+    .ninjablock
+      .prodbutton add to cart

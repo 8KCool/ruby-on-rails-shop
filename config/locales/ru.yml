@@ -41,6 +41,16 @@ ru:
         few:   "Оператора" # 2
         many:  "Операторов" # 5
         other: "Операторы" # all
+      category:
+        one:   "Категория"
+        few:   "Категории"
+        many:  "Категорий"
+        other: "Категории"
+      product:
+        one:   "Продукт"
+        few:   "Продукта"
+        many:  "Продуктов"
+        other: "Продукты"
       setting:
         one:   "Настройка"
         few:   "Настройки"
@@ -66,6 +76,14 @@ ru:
         few:    "Новости"
         many:   "Новостей"
         other:  "Новости"
+    errors:
+      models:
+        product:
+          attributes:
+            price:
+              invalid: "Нельзя ввести больше двух знаков после запятой"
+            saleprice:
+              invalid: "Нельзя ввести больше двух знаков после запятой"
     attributes:
       admin_user:
         email:                  "Электронная почта"
@@ -80,6 +98,23 @@ ru:
         last_sign_in_ip:        "Последний IP оператора"
         created_at:             "Создан"
         updated_at:             "Обновлен"
+      category:
+        name:  "Название"
+        hided: "Скрыта?"
+        created_at: "Добавлена"
+        updated_at: "Обновлена"
+      product:
+        name:  "Название"
+        image: "Изображение"
+        price: "Цена"
+        saleprice: "Скидочная цена"
+        saletime: "До какого момента скидка"
+        count: "Количество"
+        prior: "Приоритет"
+        hided: "Скрыт?"
+        created_at: "Добавлен"
+        updated_at: "Обновлен"
+        category: "Категория"
       setting:
         name:  "Название"
         value: "Значение"

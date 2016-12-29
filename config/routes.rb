@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   resources :news, only: [:index, :show]
 
   # pages
-  get '/cart', to: 'home#cart'
+  get '/cart', to: 'cart#index'
+  post '/cart', to: 'cart#cartls'
+
   get '*page_path' => 'pages#show', as: :page
 
   # You can have the root of your site routed with "root"
