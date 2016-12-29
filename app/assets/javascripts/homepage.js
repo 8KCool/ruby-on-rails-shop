@@ -24,6 +24,26 @@ function initStorage() {
   $('.tpricespan').text("$" + tprice.toFixed(2));
 }
 
+function PopUpShow() {
+  $('.popup').each(function(){
+    $(this).data('count', parseInt($(this).data('count')) + 1);
+    var count = parseInt($(this).data('count'));
+    $(this).css('transform','translate(0,' + (-240*count) + 'px)');
+   });
+  $('.pcontent').append('<div class="popup" data-count="0">Product successfully added in cart!</div>');
+  $('.popup').last().addClass('appear');
+  setTimeout(function(){ $('.popup').last().addClass('visappear'); }, 20);
+  return $('.popup').last();
+}
+
+function PopUpHide($popup) {
+  $popup.css('transform','translate(-720px,' + (-240*parseInt($popup.data('count'))) + 'px)');
+  $popup.removeClass('visappear');
+  setTimeout(function(){
+    $popup.removeClass('appear');
+    $popup.remove(); }, 400);
+}
+
 function initAddButton() {
   $('.prodbutton').click(function (){
     var $this = $(this);
@@ -39,6 +59,9 @@ function initAddButton() {
           tprice += products[key]['price'];
           localStorage['products'] = JSON.stringify(products);
           itemCount ++;
+
+          var $popup = PopUpShow();
+          setTimeout(function(){ PopUpHide($popup); }, 2000);
         }
 
         finder = true;
@@ -61,6 +84,8 @@ function initAddButton() {
 
       tprice += prodPrice;
       localStorage['products'] = JSON.stringify(products);
+      var $popup = PopUpShow();
+      setTimeout(function(){ PopUpHide($popup); }, 2000);
     }
 
     $('.circle').data('count', itemCount).css('display', 'block');
@@ -72,6 +97,7 @@ function initAddButton() {
     }
 
     $('.tpricespan').html("$" + (tprice).toFixed(2));
+
   });
 }
 
@@ -149,7 +175,7 @@ function initProdEvents() {
     $('.tpricespan').text("$" + $('.cartbox').data('totalprice'));
 
     var price = parseFloat($(this).parents('.prodbox').data('price'));
-    $(this).parents('.prodbox-func').find('.totalprice').text("$" + (price * $(this).val()).toFixed(2));
+    $(this).parents('.prodbox-func').find('.totalprice').text("$" + (price * $(this).val()).toFixed(2).replace('.', ','));
   });
 
   $('.plusblock').click(function (){
@@ -180,7 +206,7 @@ function initProdEvents() {
           $('.tpricespan').text("$" + $('.cartbox').data('totalprice'));
 
           $(this).parent('.countblock').find('.prodinp').val(counter);
-          $(this).parents('.prodbox-func').find('.totalprice').text("$" + (price * counter).toFixed(2));
+          $(this).parents('.prodbox-func').find('.totalprice').text("$" + (price * counter).toFixed(2).replace('.', ','));
         }
       }
     }
@@ -228,12 +254,35 @@ function initProdEvents() {
     }
   });
 
-  $('.cartbutton').click(function (){
-    localStorage.clear();
-    $(".pcontent").replaceWith('<div class="pcontent holder clearfix"><div class="cartbox">' +
-        '</div><div class="allprods"><div class="prodbox"><div class="prodbox-desc">your cart is empty</div></div></div></div>');
-    $('.circle').css('display', 'none');
-    $('.tpricespan').text("empty");
+  $('.cartbutton').click(function () {
+    var idCount = {};
+    var uniqCount = 0;
+
+    for (key in products) {
+          uniqCount += 1;
+          var prodName = "product" + uniqCount;
+          idCount[prodName] = {};
+          idCount[prodName]['id'] = products[key]['id'];
+          idCount[prodName]['count'] = products[key]['count'];
+      }
+
+      $.ajax({
+        url: '/makeorder',
+        type: 'post',
+        data: { 'idCount': idCount },
+        success: function(data, status, xhr) {
+          localStorage.clear();
+          $(".pcontent").replaceWith('<div class="pcontent holder clearfix"><div class="cartbox">' +
+          '</div><div class="allprods"><div class="prodbox"><div class="prodbox-desc">' +
+          'your order is accepted, thank you</div></div></div></div>');
+          $('.circle').css('display', 'none');
+          $('.tpricespan').text("empty");
+        },
+        error: function(xhr, status, error) {
+          alert(error);
+        }
+      });
+
   });
 }
 
