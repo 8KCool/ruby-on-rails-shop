@@ -7,7 +7,7 @@ Here I've done example of a shop which contains 2 pages:
 Also, I've done Admin's panel (based on ActiveAdmin) with permission through the /admin page (login: admin@example.com password: password).
 You can add new products/categories/etc. there and so on and so forth.
 
-I've realized shopping cart with using localStorage on client side.
+I've implemented shopping cart with using localStorage on client side.
 
 Project based on [Mayak Rails website template](http://mayak.io).
 
