@@ -52,4 +52,4 @@ Category.create!([
   { name: "ACCESSORIES" }
 ])
 
-30.times { |i| Product.create!([ { name: "product example#{i}", price: 450.07, count: 300, category_id: categories[7].id } ]) }
+30.times { |i| Product.create!([ { name: "product example#{i}", price: 450.07, count: 300, category_id: 7 } ]) }
