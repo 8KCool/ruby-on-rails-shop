@@ -1,4 +1,4 @@
-FrontLearn
+RoR shop
 =================
 Here I've done example of a shop which contains 2 pages:
 - Main page (with live-loading of products);
