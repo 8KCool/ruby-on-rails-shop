@@ -8,6 +8,8 @@ gem 'pg'
 # A thin and fast web server
 gem 'thin'
 
+gem 'rails_12factor', group: :production
+
 # Template language, replacing html/erb
 gem 'slim', '3.0.6'
 # Use SCSS for stylesheets
