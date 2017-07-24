@@ -9,7 +9,7 @@ gem 'pg'
 gem 'thin'
 
 gem 'rails_12factor', group: :production
-
+gem 'newrelic_rpm'
 # Template language, replacing html/erb
 gem 'slim', '3.0.6'
 # Use SCSS for stylesheets
