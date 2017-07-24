@@ -11,6 +11,8 @@ I've implemented shopping cart with using localStorage on client side.
 
 Project based on [Mayak Rails website template](http://mayak.io).
 
+You can check it out here: https://ror-shop-example.herokuapp.com/.
+
 Getting Started
 ---------------
 
