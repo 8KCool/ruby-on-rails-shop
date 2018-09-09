@@ -1,7 +1,7 @@
 RoR shop
 =================
-Here I've done example of a shop which contains 2 pages:
-- Main page (with live-loading of products);
+Here I've done an example of shop which contains 2 pages:
+- Main page (including live-loading of products);
 - Cart page.
 
 Also, I've done Admin's panel (based on ActiveAdmin) with permission through the /admin page (login: admin@example.com password: password).
@@ -36,4 +36,4 @@ When done, run:
 
 You can install demo data using command: `bin/rake db:seed`
 
-Application ready for start. You can launch webserver with command `bin/rails server` and see home page at [localhost:3000](http://localhost:3000/) url.
+Application ready to start. You can launch webserver with command `bin/rails server` and see home page at [localhost:3000](http://localhost:3000/) url.
