@@ -36,4 +36,4 @@ When done, run:
 
 You can install demo data using command: `bin/rake db:seed`
 
-Application ready to start. You can launch webserver with command `bin/rails server` and see home page at [localhost:3000](http://localhost:3000/) url.
+Application is ready to start. You can launch webserver `bin/rails server` and check home page at [localhost:3000](http://localhost:3000/) url.
