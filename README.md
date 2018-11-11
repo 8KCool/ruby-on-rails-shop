@@ -1,4 +1,4 @@
-RoR shop
+ror shop
 =================
 Here I've done an example of shop which contains 2 pages:
 - Main page (including live-loading of products);
